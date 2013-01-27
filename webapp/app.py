@@ -7,12 +7,12 @@ from flask import request
 from os import environ
 
 from flask.ext.sqlalchemy import SQLAlchemy
-from sqlalchemy import create_engine
 
-engine = create_engine('mysql://@/test', convert_unicode=True)
+from sqlalchemy import create_engine
 
 app = flask.Flask(__name__)
 app.debug = True
+engine = create_engine('mysql://allie:967enm@/test', convert_unicode=True)
 db = SQLAlchemy(app)
 
 @app.route("/")
