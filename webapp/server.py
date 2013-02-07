@@ -12,7 +12,7 @@ from sqlalchemy import create_engine
 
 app = flask.Flask(__name__)
 app.debug = True
-engine = create_engine('mysql://allie:967enm@/test', convert_unicode=True)
+engine = create_engine('mysql://benj:w3rnid@/my2ooz', convert_unicode=True)
 db = SQLAlchemy(app)
 
 @app.route("/")
