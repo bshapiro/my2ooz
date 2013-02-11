@@ -12,13 +12,13 @@ from sqlalchemy import create_engine
 
 app = flask.Flask(__name__)
 app.debug = True
-engine = create_engine('mysql://benj:w3rnid@/my2ooz', convert_unicode=True)
+engine = create_engine('mysql://my2ooz:w3rnid@/my200z', convert_unicode=True)
 db = SQLAlchemy(app)
 
 @app.route("/")
 def hello():
     connection = engine.connect()
-    data = connection.execute('select * from SITES')
+    data = connection.execute('select * from venue_table')
     connection.close()
     string = ""
     for row in data:
@@ -26,4 +26,4 @@ def hello():
     return string
 
 if __name__ == "__main__":
-    app.run(port=int(environ['FLASK_PORT']))
+    app.run(port=61004)
