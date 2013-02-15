@@ -31,7 +31,7 @@ def test_all_calls():
     all_info_string = "all info for venue 0: " + all_info
     week_genres_string = ""
     for day in week:
-        week_genres_string += day + ": " + week_genres[week_genres.index(day)]
+        week_genres_string += day + ": " + week_genres[week.index(day)]
     final_string = all_info_string + week_genres_string
 
     return final_string
