@@ -48,7 +48,10 @@ def get_all_info(connection, venue_id):
 def get_day_info(connection, day, venue_id):
     query = 'select ' + day + ' from venue_table where venue_id = ' + str(venue_id)
     data = connection.execute(query)
-    return str(data) + "</br>"
+    string = ""
+    for row in data:
+	string += str(row) + "</br>"
+    return string
 
 if __name__ == "__main__":
     app.run(port=61004)
