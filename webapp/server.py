@@ -18,9 +18,7 @@ db = SQLAlchemy(app)
 
 @app.route("/")
 def test_all_calls():
-    
     connection = engine.connect()
-
     # TESTS FOR WEEK INFO
     all_info = get_all_info(connection, 0)
     week = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
@@ -32,7 +30,12 @@ def test_all_calls():
     week_genres_string = ""
     for day in week:
         week_genres_string += day + ": " + week_genres[week.index(day)]
-    final_string = all_info_string + week_genres_string
+        
+    venue_info = get_venue_info(connection, 0)
+    
+    final_string = all_info_string + week_genres_string + venue_info 
+    
+    
     # END TESTS
     
     # TESTS FOR VENUE INFO
@@ -40,7 +43,6 @@ def test_all_calls():
 
     connection.close()
     return final_string
-
 
 def get_all_info(connection, venue_id):
     query = 'select * from venue_table where venue_id = ' + str(venue_id)
@@ -53,7 +55,11 @@ def get_day_info(connection, day, venue_id):
     data = connection.execute(query)
     return stringerize(data)
 
-
+def get_venue_info(connection, venue_id):
+    query = 'select manager_name, food_drink from venue_table where venue_id = ' + str(venue_id)
+    data = connection.execute(query)
+    return stringerize(data)
+    
 def stringerize(sql_object):
     string = ""
     for row in sql_object:
