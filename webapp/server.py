@@ -39,7 +39,7 @@ def test_all_calls():
         week_genres_string += day + ": " + week_genres[week.index(day)]
         
     venue_info = 'venue info for existing login: ' + stringify(get_venue_info_by_login(connection, 'login'))
-    venue_info_2 = 'venue info for non-existent login: ' + str(get_venue_info_by_login(conncetion, 'admin'))
+    venue_info_2 = 'venue info for non-existent login: ' + str(get_venue_info_by_login(connection, 'admin'))
     
     final_string = all_info_string + week_genres_string + venue_info + venue_info_2
     
@@ -81,7 +81,7 @@ def stringify(sql_object):
 
 class User(UserMixin):
 
-    def __init__(self, venue_info, active=True)
+    def __init__(self, venue_info, active=True):
 	self.name = venue_info['manager_name']
 	self.venue_id = venue_info['venue_id']
 	self.location_name = venue_info['location_name']
