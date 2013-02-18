@@ -71,8 +71,6 @@ def get_venue_info_by_login(connection, login):
 	return None
     return data
     
-def row2dict(row):
-    return {c.name: getattr(row, c.name) for c in row.__table__.columns}
 
 def stringify(sql_object):
     string = ""
