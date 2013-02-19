@@ -58,8 +58,12 @@ def get_all_info(connection):
 
 def get_day_info_by_venue_id(connection, day, venue_id):
     query = 'select ' + day + ' from venue_table where venue_id = ' + str(venue_id)
-    data = connection.execute(query)
-    return data
+    try:
+	data = connection.execute(query)
+    except Exception:
+	return None
+    return data.fetchone()
+
 
 def get_venue_info_by_login(connection, login):
     query = 'select * from venue_table where login = ' + str(login)
@@ -67,7 +71,8 @@ def get_venue_info_by_login(connection, login):
 	data = connection.execute(query)
     except Exception:
 	return None
-    return data
+    return data.fetchone()
+
     
 def get_venue_info_by_venue_id(connection, venue_id):
     query = 'select * from venue_table where venue_id = ' + str(venue_id)
@@ -75,13 +80,13 @@ def get_venue_info_by_venue_id(connection, venue_id):
         data = connection.execute(query)
     except Exception:
         return None
-    return data
+    return data.fetchone()
+
 
 def stringify(sql_object):
-    string = ""
-    for row in sql_object:
-	string += str(row) + "</br>"
+    string = str(sql_object) + "</br>"
     return string
+
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -90,11 +95,7 @@ def login():
 	password = request.form["password"]
 	connection = engine.connect()
 	venue_info = get_venue_info_by_login(connection, login)
-	if venue_info != None:
-	    venue_info = venue_info.fetchone()
-	else:
-	    return "Invalid username or password."
-        if venue_info['password'] == password:
+        if venue_info != None and venue_info['password'] == password:
             remember = request.form.get("remember", "no") == "yes"
 	    user = User(venue_info, active=True)
             if login_user(user, remember=remember):
@@ -104,6 +105,7 @@ def login():
 	else:
 	    return "Invalid username or password."
 
+
 @login_manager.user_loader
 def load_user(userid):
     connection = engine.connect()
@@ -111,7 +113,8 @@ def load_user(userid):
     if venue_info == None:
 	return None
     else:
-	return User(venue_info.fetchone())
+	return User(venue_info)
+
 
 class User:
 
