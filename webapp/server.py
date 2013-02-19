@@ -3,7 +3,7 @@
 import shelve
 from subprocess import check_output
 import flask
-from flask import request
+from flask import request, render_template
 from os import environ
 from flask.ext.login import (LoginManager, current_user, login_required,
                             login_user, logout_user, UserMixin, AnonymousUser,
@@ -15,9 +15,11 @@ from sqlalchemy import create_engine
 
 
 app = flask.Flask(__name__)
-app.debug = True
-
-login_manager = LoginManager()
+SECRET_KEY = "yeah, not actually a secret"
+DEBUG = True
+app.config.from_object(__name__)
+login_manager = flask.ext.login.LoginManager()
+login_manager.setup_app(app)
 
 engine = create_engine('mysql://my2ooz:w3rnid@/my200z', convert_unicode=True)
 db = SQLAlchemy(app)
@@ -46,7 +48,7 @@ def test_all_calls():
     # END TESTS
 
     connection.close()
-    return final_string
+    return render_template("index.html")
 
 def get_all_info(connection):
     query = 'select * from venue_table'
@@ -67,6 +69,13 @@ def get_venue_info_by_login(connection, login):
 	return None
     return data
     
+def get_venue_info_by_venue_id(connection, venue_id):
+    query = 'select * from venue_table where venue_id = ' + str(venue_id)
+    try:
+        data = connection.execute(query)
+    except Exception:
+        return None
+    return data
 
 def stringify(sql_object):
     string = ""
@@ -74,24 +83,35 @@ def stringify(sql_object):
 	string += str(row) + "</br>"
     return string
 
-@app.route("/login", methods=["POST"])
+@app.route("/login", methods=["GET", "POST"])
 def login():
     if "login" in request.form and "password" in request.form:
         login = request.form["login"]
 	password = request.form["password"]
 	connection = engine.connect()
 	venue_info = get_venue_info_by_login(connection, login)
-        if venue_info != None:
+	if venue_info != None:
+	    venue_info = venue_info.fetchone()
+	else:
+	    return "Invalid username or password."
+        if venue_info['password'] == password:
             remember = request.form.get("remember", "no") == "yes"
 	    user = User(venue_info, active=True)
             if login_user(user, remember=remember):
-                flash("Logged in!")
-                return redirect(url_for("edit"))
+                return "Logged in!"
             else:
-                flash("Sorry, but we could not log you in.")
-        else:
-            flash(u"Invalid credentials.")
-    return render_template("login.html")
+                return "Sorry, but we could not log you in. Please email support@my2ooz.com for help."
+	else:
+	    return "Invalid username or password."
+
+@login_manager.user_loader
+def load_user(userid):
+    connection = engine.connect()
+    venue_info = get_venue_info_by_venue_id(connection, userid)
+    if venue_info == None:
+	return None
+    else:
+	return User(venue_info.fetchone())
 
 class User:
 
@@ -117,7 +137,7 @@ class User:
 	self.active = active
     
     def is_active(self):
-        return self.active
+       return self.active
     
     def is_authenticated(self):
 	return self.is_authenticated
