@@ -74,27 +74,40 @@ def stringify(sql_object):
 	string += str(row) + "</br>"
     return string
 
-class User(UserMixin):
+class User():
 
     def __init__(self, venue_info, active=True):
-	self.name = venue_info['manager_name']
-	self.venue_id = venue_info['venue_id']
-	self.location_name = venue_info['location_name']
-	self.venue_type = venue_info['venue_type']
-	self.login = venue_info['login']
-	self.password = venue_info['password']
-	self.monday = venue_info['monday']
-	self.tuesday = venue_info['tuesday']
-	self.wednesday = venue_info['wednesday']
-	self.thursday = venue_info['thursday']
-	self.friday = venue_info['friday']
-	self.saturday = venue_info['saturday']
-	self.sunday = venue_info['sunday']
-	self.food_drink = venue_info['food_drink']
-        self.active = active
+	if venue_info != None:
+	    self.name = venue_info['manager_name']
+ 	    self.venue_id = venue_info['venue_id']
+	    self.location_name = venue_info['location_name']
+	    self.venue_type = venue_info['venue_type']
+	    self.login = venue_info['login']
+	    self.password = venue_info['password']
+	    self.monday = venue_info['monday']
+	    self.tuesday = venue_info['tuesday']
+	    self.wednesday = venue_info['wednesday']
+	    self.thursday = venue_info['thursday']
+	    self.friday = venue_info['friday']
+	    self.saturday = venue_info['saturday']
+	    self.sunday = venue_info['sunday']
+	    self.food_drink = venue_info['food_drink']
+	    self.is_authenticated = True
+        else:
+	    self.is_authenticated = False
+	self.active = active
     
     def is_active(self):
         return self.active
+    
+    def is_authenticated(self):
+	return self.is_authenticated
+
+    def is_anonymous(self):
+	return False
+
+    def get_id(self):
+	return unicode(self.venue_id)
 
 if __name__ == "__main__":
     app.run(port=61004)
