@@ -74,7 +74,26 @@ def stringify(sql_object):
 	string += str(row) + "</br>"
     return string
 
-class User():
+@app.route("/login", methods=["POST"])
+def login():
+    if "login" in request.form and "password" in request.form:
+        login = request.form["login"]
+	password = request.form["password"]
+	connection = engine.connect()
+	venue_info = get_venue_info_by_login(connection, login)
+        if venue_info != None:
+            remember = request.form.get("remember", "no") == "yes"
+	    user = User(venue_info, active=True)
+            if login_user(user, remember=remember):
+                flash("Logged in!")
+                return redirect(url_for("edit"))
+            else:
+                flash("Sorry, but we could not log you in.")
+        else:
+            flash(u"Invalid credentials.")
+    return render_template("login.html")
+
+class User:
 
     def __init__(self, venue_info, active=True):
 	if venue_info != None:
