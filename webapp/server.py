@@ -26,7 +26,8 @@ db = SQLAlchemy(app)
 @app.route("/")
 def test_all_calls():
     connection = engine.connect()
-    # TESTS FOR WEEK INFO
+    
+    # BEGIN TESTS
     all_info = stringify(get_all_info(connection))
     week = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
     week_genres = []
@@ -42,11 +43,6 @@ def test_all_calls():
     venue_info_2 = 'venue info for non-existent login: ' + str(get_venue_info_by_login(connection, 'admin'))
     
     final_string = all_info_string + week_genres_string + venue_info + venue_info_2
-    
-    
-    # END TESTS
-    
-    # TESTS FOR VENUE INFO
     # END TESTS
 
     connection.close()
@@ -75,7 +71,6 @@ def get_venue_info_by_login(connection, login):
 def stringify(sql_object):
     string = ""
     for row in sql_object:
-	print type(row)
 	string += str(row) + "</br>"
     return string
 
