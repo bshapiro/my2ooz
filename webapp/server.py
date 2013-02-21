@@ -1,5 +1,5 @@
 from flask import request, render_template
-from flask.ext.login import LoginManager, current_user, login_user
+from flask.ext.login import LoginManager, login_user, current_user, logout_user, login_required
 from flask.ext.sqlalchemy import SQLAlchemy
 from sqlalchemy import create_engine
 import flask
@@ -40,6 +40,7 @@ def test_all_calls():
 
     final_string = all_info_string + week_genres_string + venue_info + venue_info_2
     print final_string
+    print "current user: " + str(current_user())
 
     # END TESTS
 
@@ -111,6 +112,15 @@ def load_user(userid):
         return None
     else:
         return User(venue_info)
+
+
+@app.route("/logout")
+@login_required
+def logout():
+    if logout_user():
+        return "User successfully logged out."
+    else:
+        return "There was an error logging out the user."
 
 
 class User:
