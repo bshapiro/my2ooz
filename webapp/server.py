@@ -40,7 +40,7 @@ def test_all_calls():
 
     final_string = all_info_string + week_genres_string + venue_info + venue_info_2
     print final_string
-    print "current user: " + str(current_user())
+    print "current user: " + str(current_user)
 
     # END TESTS
 
@@ -141,9 +141,9 @@ class User:
             self.saturday = venue_info['saturday']
             self.sunday = venue_info['sunday']
             self.food_drink = venue_info['food_drink']
-            self.is_authenticated = True
+            self.authenticated = True
         else:
-            self.is_authenticated = False
+            self.authenticated = False
         self.active = active
 
     def is_active(self):
