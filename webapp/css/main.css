@@ -1,0 +1,140 @@
+@charset "UTF-8";
+/* CSS Document */
+
+body{
+	background: #9FC5F8;
+}
+
+#main_menu {
+	top: 0;
+	left: 50%;
+	margin-left: -150px;
+	position: absolute;
+	height: 40px;
+}
+
+#header {
+	height: 40px;
+}
+#menu_table {
+	width: 300px;
+	height: 20px;
+	border: 1px solid black;
+	border-top: 0 !important;
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+#menu_table td, th{
+	border: 1px solid black;
+	border-top: 0 !important;
+	text-align: center;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background-color: #104E8B;
+	color: white;
+}
+
+#home {
+	width: 200px;
+	height: 50px;
+	left: 0;
+	top: 0;
+}
+
+#login {
+	right: 100px;
+	top: 0;
+	position: absolute;
+}
+
+#login_table {
+	width: 80px;
+	height: 20px;
+	border: 2px solid black;
+	border-top: 0 !important;
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+#login_table td, th{
+	border: 2px solid black;
+	border-top: 0 !important;
+	text-align: center;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background-color: #2A76E0;
+	color: white;
+}
+
+#home_image {
+	margin-left: 5px;
+	margin-top: 5px;
+	width: 77%;
+	height: 77%;
+}
+
+#main {
+	text-align: center;
+	left: 50%;
+	margin-left: -375px;
+	position: absolute;
+}
+
+#slogan {
+	padding-top: 50px;
+	padding-left: 75px;
+	font-size: 32px;
+	width: 600px;
+	height: 50px;
+}
+
+#logo {
+	padding-top: 40px;
+	width: 500px;
+	height: auto;
+	padding-left: 125px;
+}
+
+#iphones {
+	padding: 0;
+	margin:0;
+	padding-top: 20px;
+
+}
+
+.iphone {
+	width: 250px;
+	height: auto;
+}
+
+#bar {
+	margin-top: 20px;
+	width: 900px;
+	left: 50%;
+	margin-left: -450px;
+	position: absolute;
+	height: 10px;
+	background-color: #073763;
+	top: 800px;
+}
+
+#asseenon {
+	position: absolute;
+	left: 50%;
+	margin-left: -350px;
+	top: 850px;
+	width: 700px;
+}
+
+#asseenon_text {
+	text-align: center;
+	font-size: 24px;
+	width: 200px;
+	height: 20px;
+	padding-left: 275px;
+}
+
+#asseenon_img {
+}
