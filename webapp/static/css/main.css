@@ -1,6 +1,11 @@
 @charset "UTF-8";
 /* CSS Document */
 
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
 body{
 	background: #9FC5F8;
 }
@@ -135,5 +140,40 @@ body{
 	padding-left: 275px;
 }
 
-#asseenon_img {
+#footer {
+	margin-left: 0px;
+	padding-left: 0px;
+	height: 300px;
+	top: 1050px;
+	position: absolute;
+	width: 100%;
+	background-color: #073763;
+}
+
+ul {
+	padding-top: 20px;	
+	color: white;
+	list-style-type:none;
+	font-size: 14px;
+	width: 200px;
+}
+
+.title {
+	font-size: 18px;
+}
+
+#company {
+	padding-left: 200px;
+	float: left;
+}
+
+#stayintouch {
+	position: absolute;
+	left: 50%;
+}
+
+#available_img {
+	margin-top: 10px;
+	width: 200px;
+	height: auto;
 }
