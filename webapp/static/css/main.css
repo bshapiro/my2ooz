@@ -69,8 +69,6 @@ body{
 }
 
 #home_image {
-	margin-left: 5px;
-	margin-top: 5px;
 	width: 77%;
 	height: 77%;
 }
@@ -78,13 +76,13 @@ body{
 #main {
 	text-align: center;
 	left: 50%;
-	margin-left: -375px;
+	margin-left: -300px;
 	position: absolute;
 }
 
 #slogan {
-	padding-top: 50px;
-	padding-left: 75px;
+	padding-top: 40px;
+	padding-left: 20px;
 	font-size: 32px;
 	width: 600px;
 	height: 50px;
@@ -92,21 +90,22 @@ body{
 
 #logo {
 	padding-top: 40px;
-	width: 500px;
+	width: 450px;
 	height: auto;
-	padding-left: 125px;
+	padding-left: 95px;
 }
 
 #iphones {
 	padding: 0;
 	margin:0;
 	padding-top: 20px;
-
+	padding-right: 10px;
 }
 
 .iphone {
-	width: 250px;
+	width: 200px;
 	height: auto;
+	padding-left: 10px;
 }
 
 #bar {
@@ -117,14 +116,14 @@ body{
 	position: absolute;
 	height: 10px;
 	background-color: #073763;
-	top: 800px;
+	top: 690px;
 }
 
 #asseenon {
 	position: absolute;
 	left: 50%;
 	margin-left: -350px;
-	top: 850px;
+	top: 730px;
 	width: 700px;
 }
 
