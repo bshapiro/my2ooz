@@ -5,7 +5,7 @@ from sqlalchemy import create_engine
 import flask
 
 
-app = flask.Flask(__name__, static_url_path='')
+app = flask.Flask(__name__)
 
 # Flask-login setup
 SECRET_KEY = "hello? yes, this is secret key"
@@ -22,7 +22,6 @@ db = SQLAlchemy(app)
 @app.route("/design_test")
 def design_test():
     return render_template("main.html")
-
 
 @app.route("/")
 def test_all_calls():
