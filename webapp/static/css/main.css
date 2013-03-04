@@ -81,21 +81,21 @@ body{
 #main {
 	text-align: center;
 	left: 50%;
-	margin-left: -300px;
+	margin-left: -245px;
 	position: absolute;
 }
 
 #slogan {
 	padding-top: 40px;
 	padding-left: 20px;
-	font-size: 32px;
-	width: 600px;
+	font-size: 24px;
+	width: 490px;
 	height: 50px;
 }
 
 #logo {
 	padding-top: 40px;
-	width: 450px;
+	width: 300px;
 	height: auto;
 	padding-left: 95px;
 }
@@ -107,8 +107,15 @@ body{
 	padding-right: 10px;
 }
 
+#passcode {
+	padding: 0;
+	margin:0;
+	padding-top: 60px;
+	padding-right: 10px;
+}
+
 .iphone {
-	width: 200px;
+	width: 150px;
 	height: auto;
 	padding-left: 10px;
 }
@@ -121,15 +128,15 @@ body{
 	position: absolute;
 	height: 10px;
 	background-color: #073763;
-	top: 690px;
+	top: 550px;
 }
 
 #asseenon {
 	position: absolute;
 	left: 50%;
 	margin-left: -350px;
-	top: 730px;
-	width: 700px;
+	top: 600px;
+	width: 600px;
 }
 
 #asseenon_text {
@@ -143,8 +150,8 @@ body{
 #footer {
 	margin-left: 0px;
 	padding-left: 0px;
-	height: 300px;
-	top: 1050px;
+	height: 220px;
+	top: 920px;
 	position: absolute;
 	width: 100%;
 	background-color: #073763;

@@ -23,6 +23,11 @@ db = SQLAlchemy(app)
 def design_test():
     return render_template("main.html")
 
+
+@app.route("/design_002")
+def design_002():
+    return render_template("002.html")
+
 @app.route("/")
 def test_all_calls():
     connection = engine.connect()
