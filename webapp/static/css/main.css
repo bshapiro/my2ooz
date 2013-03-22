@@ -85,6 +85,14 @@ body{
 	position: absolute;
 }
 
+
+#form {
+	text-align: left;
+	left: 35%;
+	margin-left: -245px;
+	position: absolute;
+}
+
 #slogan {
 	padding-top: 40px;
 	padding-left: 20px;
