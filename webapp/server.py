@@ -27,54 +27,21 @@ db = SQLAlchemy(app)
 metadata = MetaData(bind=engine)
 
                     
-@app.route("/design_001")
-def design_001():
+@app.route("/main")
+def main():
     return render_template("main.html")
 
+@app.route('/login_form')
+def login_form():
+    return render_template("login_form.html")
 
-@app.route("/design_002")
-def design_002():
-    return render_template("002.html")
-
+@app.route("/passcode_check")
+def passcode_check():
+    return render_template("passcode_check.html")
 
 @app.route("/have_code")
 def have_code():
-    return render_template("have_code_form.html")
-
-@app.route("/test_form", methods=['GET'])
-def create_form():
-    return render_template('test.html')
-
-@app.route("/create", methods=['PUT', 'POST'])
-def create():
-	print request.json
-	ins = venue_table.insert()
-	new_user = ins.values(manager_name=request.form['manager_name'], venue_id=21, location_name="folsom")
-	conn = engine.connect()
-	conn.execute(new_user)		        
-
-	return render_template('test.html')
-
-@app.route('/venues/', methods=['POST','PUT','DELETE'])
-def venues():
-    connection = engine.connect()
-
-    if request.method == 'GET':
-        pass
-    if request.method == 'POST': #create
-        db = Session()
-        venue_json = Venue(request.json['manager_name'], request.json['venue_id'], request.json['location_name'],
-                           request.json['venue_type'], request.json['login'], request.json['password'], request.json['monday'], request.json['tuesday'],
-                           request.json['wednesday'], request.json['thursday'], request.json['friday'], request.json['saturday'], request.json['sunday'],
-                           request.json['food_drink'])
-        #       app.logger.debug(venue_json)
-        db.session.add(venue_json)
-        db.sesssion.commit()
-
-    if request.method == 'DELETE':
-        pass
-
-    return render_template("002.html")
+    return render_template("have_code.html")
 
 @app.route("/")
 def test_all_calls():
@@ -105,6 +72,7 @@ def get_all_info(connection):
     data = connection.execute(query)
     return data
 
+
 def get_day_info_by_venue_id(connection, day, venue_id):
     query = 'select ' + day + ' from venue_table where venue_id = ' + str(venue_id)
     try:
@@ -131,6 +99,19 @@ def get_venue_info_by_venue_id(connection, venue_id):
         return None
     return data.fetchone()
 
+@app.route('/update_venue', methods='POST')
+def update_venue(connection, venue_id, parameters):
+    connection = engine.connect()
+    venue_id = current_user.venue_id
+    parameters = request.json
+    print parameters
+    return update_venue_by_id(connection, venue_id, parameters)
+
+def update_venue_by_id(connection, venue_id, parameters):
+    query ='update venue_table set'
+    for key in parameters.keys():
+	query += key + '=' + parameteres[key] + ','
+    query += 'where venue_id = ' + str(venue_id)
 
 def stringify(sql_object):
     string = str(sql_object) + "</br>"
