@@ -1,15 +1,8 @@
-from sqlalchemy import Integer, String
 from flask import request, render_template
 from flask.ext.login import LoginManager, login_user, current_user, logout_user, login_required
 from flask.ext.sqlalchemy import SQLAlchemy
-from sqlalchemy import create_engine, MetaData, Column, Table, ForeignKey
-from sqlalchemy.orm import create_session, sessionmaker
+from sqlalchemy import create_engine, MetaData
 import flask
-from flask import (
-    Flask,
-    request,
-    jsonify
-    )
 
 app = flask.Flask(__name__)
 
@@ -26,22 +19,26 @@ db = SQLAlchemy(app)
 
 metadata = MetaData(bind=engine)
 
-                    
+
 @app.route("/main")
 def main():
     return render_template("main.html")
+
 
 @app.route('/login_form')
 def login_form():
     return render_template("login_form.html")
 
+
 @app.route("/passcode_check")
 def passcode_check():
     return render_template("passcode_check.html")
 
+
 @app.route("/have_code")
 def have_code():
     return render_template("have_code.html")
+
 
 @app.route("/")
 def test_all_calls():
@@ -53,7 +50,7 @@ def test_all_calls():
     week_genres = []
     for day in week:
         week_genres.append(stringify(get_day_info_by_venue_id(connection, day, 0)))
-    
+
     all_info_string = "all info:  " + all_info
     week_genres_string = ""
     for day in week:
@@ -66,6 +63,7 @@ def test_all_calls():
     print final_string
     print "current user: " + str(current_user)
     # END TESTS
+
 
 def get_all_info(connection):
     query = 'select * from venue_table'
@@ -99,6 +97,7 @@ def get_venue_info_by_venue_id(connection, venue_id):
         return None
     return data.fetchone()
 
+
 @app.route('/update_venue', methods='POST')
 def update_venue(connection, venue_id, parameters):
     connection = engine.connect()
@@ -107,11 +106,13 @@ def update_venue(connection, venue_id, parameters):
     print parameters
     return update_venue_by_id(connection, venue_id, parameters)
 
+
 def update_venue_by_id(connection, venue_id, parameters):
-    query ='update venue_table set'
+    query = 'update venue_table set'
     for key in parameters.keys():
-	query += key + '=' + parameteres[key] + ','
+        query += key + '=' + parameters[key] + ','
     query += 'where venue_id = ' + str(venue_id)
+
 
 def stringify(sql_object):
     string = str(sql_object) + "</br>"
@@ -125,7 +126,7 @@ def login():
         password = request.form["password"]
         connection = engine.connect()
         venue_info = get_venue_info_by_login(connection, login)
-        if venue_info != None and venue_info['password'] == password:
+        if venue_info is not None and venue_info['password'] == password:
             remember = request.form.get("remember", "no") == "yes"
             user = User(venue_info, active=True)
             if login_user(user, remember=remember):
@@ -134,29 +135,31 @@ def login():
                 return "Sorry, but we could not log you in. Please email support@my2ooz.com for help."
         else:
             return "Invalid username or password."
- 
+
+
 @login_manager.user_loader
 def load_user(userid):
     connection = engine.connect()
     venue_info = get_venue_info_by_venue_id(connection, userid)
-    if venue_info == None:
+    if venue_info is None:
         return None
     else:
         return User(venue_info)
 
+
 @app.route("/logout")
-@login_required 
+@login_required
 def logout():
     if logout_user():
         return "User successfully logged out."
     else:
         return "There was an error logging out the user."
 
- 
+
 class User:
 
     def __init__(self, venue_info, active=True):
-        if venue_info != None:
+        if venue_info is not None:
             self.name = venue_info['manager_name']
             self.venue_id = venue_info['venue_id']
             self.location_name = venue_info['location_name']
