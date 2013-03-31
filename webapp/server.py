@@ -101,7 +101,10 @@ def get_venue_info_by_venue_id(connection, venue_id):
 @app.route('/update_venue', methods='POST')
 def update_venue(connection, venue_id, parameters):
     connection = engine.connect()
-    venue_id = current_user.venue_id
+    if current_user.is_authenticated():
+        venue_id = current_user.venue_id
+    else:
+        return "ERROR: User is not authenticated."
     parameters = request.json
     print parameters
     return update_venue_by_id(connection, venue_id, parameters)
@@ -119,7 +122,7 @@ def stringify(sql_object):
     return string
 
 
-@app.route("/login", methods=["GET", "POST"])
+@app.route("/login", methods=["POST"])
 def login():
     if "login" in request.form and "password" in request.form:
         login = request.form["login"]

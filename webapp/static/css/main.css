@@ -81,15 +81,7 @@ body{
 #main {
 	text-align: center;
 	left: 50%;
-	margin-left: -245px;
-	position: absolute;
-}
-
-
-#form {
-	text-align: left;
-	left: 35%;
-	margin-left: -245px;
+	margin-left: -320px;
 	position: absolute;
 }
 
@@ -97,7 +89,7 @@ body{
 	padding-top: 40px;
 	padding-left: 20px;
 	font-size: 24px;
-	width: 490px;
+	width: 640px;
 	height: 50px;
 }
 
@@ -105,7 +97,7 @@ body{
 	padding-top: 40px;
 	width: 300px;
 	height: auto;
-	padding-left: 95px;
+	padding-left: 170px;
 }
 
 #iphones {
@@ -115,15 +107,8 @@ body{
 	padding-right: 10px;
 }
 
-#passcode {
-	padding: 0;
-	margin:0;
-	padding-top: 60px;
-	padding-right: 10px;
-}
-
 .iphone {
-	width: 150px;
+	width: 200px;
 	height: auto;
 	padding-left: 10px;
 }
@@ -166,7 +151,7 @@ body{
 }
 
 ul {
-	padding-top: 20px;	
+	padding-top: 20px;
 	color: white;
 	list-style-type:none;
 	font-size: 14px;
