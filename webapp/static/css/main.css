@@ -113,26 +113,31 @@ body{
 	padding-left: 10px;
 }
 
+#bottom {
+	position: absolute;
+	top: 650px;
+	width: 100%;
+}
+
 #bar {
-	margin-top: 20px;
+	margin-top: 10px;
 	width: 900px;
 	left: 50%;
 	margin-left: -450px;
-	position: absolute;
 	height: 10px;
 	background-color: #073763;
-	top: 550px;
+	position: relative;
 }
 
 #asseenon {
-	position: absolute;
 	left: 50%;
 	margin-left: -350px;
-	top: 600px;
 	width: 600px;
+	position: relative;
 }
 
 #asseenon_text {
+	margin-top: 10px;
 	text-align: center;
 	font-size: 24px;
 	width: 200px;
@@ -141,11 +146,7 @@ body{
 }
 
 #footer {
-	margin-left: 0px;
-	padding-left: 0px;
 	height: 220px;
-	top: 920px;
-	position: absolute;
 	width: 100%;
 	background-color: #073763;
 }
