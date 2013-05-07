@@ -20,7 +20,7 @@ db = SQLAlchemy(app)
 metadata = MetaData(bind=engine)
 
 
-@app.route("/main")
+@app.route('/main')
 def main():
     return render_template("main.html")
 
@@ -30,17 +30,17 @@ def login_form():
     return render_template("login_form.html")
 
 
-@app.route("/passcode_check")
+@app.route('/passcode_check')
 def passcode_check():
     return render_template("passcode_check.html")
 
 
-@app.route("/have_code")
+@app.route('/have_code')
 def have_code():
     return render_template("have_code.html")
 
 
-@app.route("/")
+@app.route('/')
 def test_all_calls():
     connection = engine.connect()
 
