@@ -13,7 +13,7 @@ body{
 #main_menu {
 	top: 0;
 	left: 50%;
-	margin-left: -150px;
+	margin-left: -100px;
 	position: absolute;
 	height: 40px;
 }
@@ -21,15 +21,15 @@ body{
 #header {
 	height: 40px;
 }
+
 #menu_table {
-	width: 300px;
+	width: 200px;
 	height: 20px;
 	border: 1px solid black;
 	border-top: 0 !important;
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-
 
 #menu_table td, th{
 	border: 1px solid black;
@@ -73,7 +73,31 @@ body{
 	color: white;
 }
 
-#home_image {
+#register_table {
+	width: 100px;
+	height: 35px;
+	border: 1px solid black;
+	border-top: 0 !important;
+	border-left: 0 !important;
+	border-collapse: collapse;
+	border-spacing: 0;
+	top: 0;
+	left: 50%;
+	margin-left: 98px;
+	position: absolute;
+}
+
+#register_table td, th{
+	border: 1px solid black;
+	border-top: 0 !important;
+	text-align: center;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background-color: #104E8B;
+	color: white;
+}
+
+.home_image {
 	width: 77%;
 	height: 77%;
 }
@@ -119,14 +143,25 @@ body{
 	width: 100%;
 }
 
-#bar {
+#lowbar {
 	margin-top: 10px;
 	width: 900px;
 	left: 50%;
 	margin-left: -450px;
 	height: 10px;
+}
+
+.bar {
 	background-color: #073763;
 	position: relative;
+	border: #2B78E4;
+	border-width: 5px !important;
+}
+
+#login_bar {
+	width: 180px;
+	height: 3px;
+	margin-left: 10px;
 }
 
 #asseenon {
@@ -177,4 +212,75 @@ ul {
 	margin-top: 10px;
 	width: 200px;
 	height: auto;
+}
+
+#login_box {
+	background-color: #FFFF00;
+	width: 200px;
+	height: 200px;
+	right: 40px;
+	top: 37px;
+	position:
+	absolute;
+	border-color: black;
+	border-width: 2px;
+}
+
+#register_box {
+	background-color: #FFFF00;
+	width: 200px;
+	height: 150px;
+	left: 50%;
+	margin-left: 48px;
+	top: 37px;
+	position:
+	absolute;
+	border-color: black;
+	border-width: 2px;
+	z-index: 3;
+}
+
+#login_text, #register_text{
+	padding: 10px;
+	text-align: left;
+	font-weight: bold;
+	font-size: 13px;
+}
+
+.label {
+	font-size: 12px;
+	text-align: left;
+	padding-top: 5px;
+	padding-bottom: 2px;
+}
+
+#login_form {
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 5px;
+}
+
+#login_input, #password_input {
+	width: 160px;
+}
+
+#submit_login {
+	padding-left: 40px;
+	font-family: Times;
+	padding-top: 10px;
+}
+
+#submit_register {
+	padding-left: 50px;
+	font-family: Times;
+	padding-top: 10px;
+}
+
+#login_subbutton, #register_subbutton {
+	font-size: 12px;
+	width: 100px;
+	background-color: #073763;
+	color: #FFFFFF;
+	border: #2B78E4;
+	border-width: 5px;
 }

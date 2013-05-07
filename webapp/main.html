@@ -3,49 +3,74 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Untitled Document</title>
-<link href="static/css/main.css" rel="stylesheet" type="text/css">
-<link href="static/reset.css" rel="stylesheet" type="text/css">
+<link href="static/css/main.css" rel="stylesheet" type="text/css"/>
+<link href="static/css/reset.css" rel="stylesheet" type="text/css"/>
+<link href="static/css/effects.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="js/jquery.hoverIntent.minified.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
 </head>
+<body>
 <div id='header'>
     <div id='home'>
-    	<img id="home_image" src="static/images/MyMyoozLogo.png"/>
+    	<img class="home_image" src="static/images/MyMyoozLogo.png"/>
     </div>
     <div id='main_menu'>
     	<table id='menu_table'>
             <tr>
                 <td id="download_button">Download</td>
                 <td id="how_it_works_button">How It Works</td>
-                <td id="register_button">Register</td>
-            </tr>
-        </table>
-    </div>
-    <div id='login'>
-        	<table id='login_table'>
             <tr>
-                <td id="login_button">Log in</td>
-            </tr>
         </table>
     </div>
-    <div id = "register_square">
-        <a href="/register.html">
-        <input type="button" id="register_subbutton" href=""></a>
+    <div id='register_items'>
+        <div id="register">
+            <table id="register_table">
+                <tr>
+                    <td id="register_button">Register</td>
+                </tr>
+            </table>
+        </div>
+        <div id = "register_box" style="display: none;" class="rounded-corners">
+            <div id='register_text'>Do you own or work at a venue, club, bar or party and want to create a profile for your business? Click below to fill out the information and apply for verification.</div>
+            <table class='bar' id="login_bar"><tr></tr></table>
+            <a href="/register.html">
+            <div id="submit_register">
+            <input type="button" class="rounded" id="register_subbutton" value ="Register" href=""></a>
+        </div>
+        </div>
     </div>
-    <div id = "login_box">
-        <form id="login_form" action="/login" method="POST">
-            <input id="login">
-            <input id="password">
-            <input type="submit" id="login_subbuton" value="Log me in!">
-        </form>
+    <div id='login_items'>
+        <div id='login'>
+            	<table id='login_table'>
+                <tr>
+                    <td id="login_button">Log in</td>
+                </tr>
+            </table>
+        </div>
+        <div id="login_box" class="rounded-corners" style="display: none;">
+            <div id="login_text"> Already signed up  with a venue and want to edit your music or venue information? Login here!</div>
+            <table class='bar' id="login_bar"><tr></tr></table>
+            <form id="login_form" action="/login" method="post">
+                <div class="label">Email address</div>
+                <input id="login_input" class="rounded"/>
+                <br/>
+                <div class="label">Password</div>
+                <input id="password_input" class="rounded"/>
+                <br>
+                <div id="submit_login"><input type="submit" id="login_subbutton" class="rounded" value="Login"/></div>
+            </form>
+        </div>
     </div>
 </div>
 <div id='main'>
     <div id='slogan'> The app that finds venues, clubs, and bars based on what's in your music library!</div>
-    <div id='logo'><img id="home_image" src="static/images/MyMyoozLogo.png"/></div>
+    <div id='logo'><img class="home_image" src="static/images/MyMyoozLogo.png"/></div>
     <div id='iphones'><img id="iphone_1" class="iphone" src="static/images/iphone.png"/><img id="iphone_2" class="iphone" src="static/images/iphone.png"/><img id="iphone_3" class="iphone" src="static/images/iphone.png"/></div>
 
 </div>
 <div id='bottom'>
-<table id='bar'><tr></tr></table>
+<table id='lowbar' class='bar'><tr></tr></table>
 <div id='asseenon'>
     <div id='asseenon_text'> As seen on:</div>
     <img id='asseenon_img' src="static/images/asseenon.png"/>
@@ -73,6 +98,5 @@
 </div>
 </div>
 </div>
-<body>
 </body>
 </html>
