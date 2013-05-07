@@ -25,103 +25,335 @@
                 <td id="login_button">Log in</td>
             </tr>
         </table>
+    </div>
 </div>
-</div>
+
 <div id='form'>
-    <div id='logo'><img id="home_image" src="static/images/MyMyoozLogo.png"/></div>
-    <div id='slogan'>Venue Name</div>
-<form action="/create">
-Address *required <br>
-<input type="text" name="address_1" size="50"><br>
-<input type="text" name="address_2" size="50"><br>
-<input type="text" name="city" size="50"><br>
-<select name="State">
-<option value="AL">Alabama</option>
-<option value="AS">Alaska</option>
-<option value="AZ">Arizona</option>
-<option value="AR">Arkansas</option>
+<form action="post">
+
+LOGIN INFORMATION:
+<div class="label required">Contact Name</div>
+<input type="text" name="name" placeholder="person in charge of musical classification"/><div class="label required">Email</div>
+<input type="text" name="email" placeholder="main contact email address"/><br>
+<div class="label required" >Contact Person Phone Number</div>
+<input type="text" name="phone" placeholder="(###) ### - ####"/><br>
+<div class="label required">Account password</div>
+<input type="password" placeholder="must be between 8 and 12 characters" name="password"/>
+
+VENUE INFORMATION:
+<div class="label required">Venue Name</div>
+<input type="text" name="venue" placeholder="Ex. The Clubhouse Bar"/>
+<div class="label required">Address</div>
+<input type="text" name="address_1" placeholder="line 1"/><br>
+<input type="text" name="address_2" placeholder="line 2"/><br>
+<input type="text" name="city" placeholder = "city"/><br>
+<select name="state">
+<option value="CA">California</option>
 </select>
-<input type="text" name="zip_code" size="32"><br>
-Phone Number *required <br>
-<input type="text" name="phone_number"><br>
-Type of Venue *required<br>
-<select name="Club">
+<input type="text" name="zip_code" placeholder="zip code"><br>
+<div class="label required">Phone Number</div>
+<input type="text" name="venue_phone" placeholder="(###) ### - ####"><br>
+<div class="label required">Type of Venue</div>
+<select name="type">
 <option value="bar">Bar</option>
 <option value="club">Club</option>
 <option value="lounge">Lounge</option>
 <option value="restaurant">Restaurant</option>
 </select><br>
-Hours *required<br>
-MON 
-<select name="open">
-<option value="8_pm">8:00pm</option>
-<option value="9_pm">9:00pm</option>
-<option value="10_pm">10:00pm</option>
-<option value="11_pm">11:00pm</option>
+<div class="label">Hours</div>
+
+<select name="mon_open_hour">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+    <option value="11">11</option>
+    <option value="12">12</option>
 </select>
-<select name="close">
-<option value="AL">8:00pm</option>
-<option value="AS">9:00pm</option>
-<option value="AZ">10:00pm</option>
-<option value="AR">11:00pm</option>
+<select name="mon_open_am_pm">
+    <option value="am">am</option>
+    <option value="pm">p,m</option>
 </select>
 
-TUE 
-<select name="open">
-<option value="8_pm">8:00pm</option>
-<option value="9_pm">9:00pm</option>
-<option value="10_pm">10:00pm</option>
-<option value="11_pm">11:00pm</option>
+
+<select name="mon_close_hour">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+    <option value="11">11</option>
+    <option value="12">12</option>
 </select>
-<select name="close">
-<option value="AL">8:00pm</option>
-<option value="AS">9:00pm</option>
-<option value="AZ">10:00pm</option>
-<option value="AR">11:00pm</option>
+<select name="mon_close_am_pm">
+    <option value="am">am</option>
+    <option value="pm">p,m</option>
 </select>
 
-WED 
-<select name="open">
-<option value="8_pm">8:00pm</option>
-<option value="9_pm">9:00pm</option>
-<option value="10_pm">10:00pm</option>
-<option value="11_pm">11:00pm</option>
+<select name="tues_open_hour">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+    <option value="11">11</option>
+    <option value="12">12</option>
 </select>
-<select name="close">
-<option value="AL">8:00pm</option>
-<option value="AS">9:00pm</option>
-<option value="AZ">10:00pm</option>
-<option value="AR">11:00pm</option>
-</select>
-
-THU 
-<select name="open">
-<option value="8_pm">8:00pm</option>
-<option value="9_pm">9:00pm</option>
-<option value="10_pm">10:00pm</option>
-<option value="11_pm">11:00pm</option>
-</select>
-<select name="close">
-<option value="AL">8:00pm</option>
-<option value="AS">9:00pm</option>
-<option value="AZ">10:00pm</option>
-<option value="AR">11:00pm</option>
+<select name="tues_open_am_pm">
+    <option value="am">am</option>
+    <option value="pm">p,m</option>
 </select>
 
-FRI 
-<select name="open">
-<option value="8_pm">8:00pm</option>
-<option value="9_pm">9:00pm</option>
-<option value="10_pm">10:00pm</option>
-<option value="11_pm">11:00pm</option>
+
+<select name="tues_close_hour">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+    <option value="11">11</option>
+    <option value="12">12</option>
 </select>
-<select name="close">
-<option value="AL">8:00pm</option>
-<option value="AS">9:00pm</option>
-<option value="AZ">10:00pm</option>
-<option value="AR">11:00pm</option>
+<select name="tues_close_am_pm">
+    <option value="am">am</option>
+    <option value="pm">p,m</option>
 </select>
+
+<select name="wed_open_hour">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+    <option value="11">11</option>
+    <option value="12">12</option>
+</select>
+<select name="wed_open_am_pm">
+    <option value="am">am</option>
+    <option value="pm">p,m</option>
+</select>
+
+
+<select name="wed_close_hour">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+    <option value="11">11</option>
+    <option value="12">12</option>
+</select>
+<select name="wed_close_am_pm">
+    <option value="am">am</option>
+    <option value="pm">p,m</option>
+</select>
+
+<select name="thurs_open_hour">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+    <option value="11">11</option>
+    <option value="12">12</option>
+</select>
+<select name="thurs_open_am_pm">
+    <option value="am">am</option>
+    <option value="pm">p,m</option>
+</select>
+
+
+<select name="thurs_close_hour">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+    <option value="11">11</option>
+    <option value="12">12</option>
+</select>
+<select name="thurs_close_am_pm">
+    <option value="am">am</option>
+    <option value="pm">p,m</option>
+</select>
+
+<select name="fri_open_hour">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+    <option value="11">11</option>
+    <option value="12">12</option>
+</select>
+<select name="fri_open_am_pm">
+    <option value="am">am</option>
+    <option value="pm">p,m</option>
+</select>
+
+
+<select name="fri_close_hour">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+    <option value="11">11</option>
+    <option value="12">12</option>
+</select>
+<select name="fri_close_am_pm">
+    <option value="am">am</option>
+    <option value="pm">p,m</option>
+</select>
+
+<select name="sat_open_hour">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+    <option value="11">11</option>
+    <option value="12">12</option>
+</select>
+<select name="sat_open_am_pm">
+    <option value="am">am</option>
+    <option value="pm">p,m</option>
+</select>
+
+
+<select name="sat_close_hour">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+    <option value="11">11</option>
+    <option value="12">12</option>
+</select>
+<select name="sat_close_am_pm">
+    <option value="am">am</option>
+    <option value="pm">p,m</option>
+</select>
+
+<select name="sun_open_hour">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+    <option value="11">11</option>
+    <option value="12">12</option>
+</select>
+<select name="sun_open_am_pm">
+    <option value="am">am</option>
+    <option value="pm">p,m</option>
+</select>
+
+<select name="sun_close_hour">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+    <option value="11">11</option>
+    <option value="12">12</option>
+</select>
+<select name="sun_close_am_pm">
+    <option value="am">am</option>
+    <option value="pm">pm</option>
+</select>
+
+<div class="label">Website Link</div>
+<input type="text" name="website" placeholder="website address"/>
+<div class="label">Yelp Link</div>
+<input type="text" name="yelp" placeholder="website address"/>
+<div class="label">Upload Main Photo</div>
+<input type="button" value="Upload"/>
+<div class="label">Upload Secondary Photos</div>
+<input type="button" value="Upload"/>
+<input type="button" value="Upload"/>
+<input type="button" value="Upload"/>
+<div class="label">Other information</div>
+<input type="text" name="other" placeholder="ex. about the venue, dress code, DJ information, party information, etc. (500 word limit)"/>
+<div class="label">Drink/Food/Other Specials/Discounts with Mymyooz</div>
+<input type="text" name="discounts" placeholder="any specials you wish to give to patrons who use Mymyooz (500 word limit)"/>
 </form>
+
+VENUE CALENDAR:
+
+<!-- insert Calendar here -->
+
 </div>
 <table id='bar'><tr></tr></table>
 <div id='asseenon'>
