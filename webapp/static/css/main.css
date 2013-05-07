@@ -8,6 +8,7 @@ html, body {
 
 body{
 	background: #9FC5F8;
+	font-family: Calibri;
 }
 
 #main_menu {
@@ -266,13 +267,13 @@ ul {
 
 #submit_login {
 	padding-left: 40px;
-	font-family: Times;
+	font-family: Calibri;
 	padding-top: 10px;
 }
 
 #submit_register {
 	padding-left: 50px;
-	font-family: Times;
+	font-family: Calibri;
 	padding-top: 10px;
 }
 
