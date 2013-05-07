@@ -29,15 +29,9 @@ def main():
 def login_form():
     return render_template("login_form.html")
 
-
-@app.route('/passcode_check')
-def passcode_check():
-    return render_template("passcode_check.html")
-
-
-@app.route('/have_code')
+@app.route('/venue_edit')
 def have_code():
-    return render_template("have_code.html")
+    return render_template("venue_edit.html")
 
 
 @app.route('/')
