@@ -8,13 +8,14 @@ html, body {
 
 body{
 	background: #9FC5F8;
-	font-family: Calibri, sans-serif !important;
+	font-family: "Lucida Grande", Calibri, sans-serif !important;
 }
 
 #main_menu {
+	font-size: 14px;
 	top: 0;
 	left: 50%;
-	margin-left: -100px;
+	margin-left: -150px;
 	position: absolute;
 	height: 40px;
 }
@@ -56,6 +57,7 @@ body{
 }
 
 #login_table {
+	font-size: 14px;
 	width: 80px;
 	height: 20px;
 	border: 2px solid black;
@@ -75,6 +77,7 @@ body{
 }
 
 #register_table {
+	font-size: 14px;
 	width: 100px;
 	height: 35px;
 	border: 1px solid black;
@@ -84,7 +87,7 @@ body{
 	border-spacing: 0;
 	top: 0;
 	left: 50%;
-	margin-left: 98px;
+	margin-left: 48px;
 	position: absolute;
 }
 
@@ -267,7 +270,6 @@ ul {
 
 #submit_login {
 	padding-left: 40px;
-	font-family: Calibri;
 	padding-top: 10px;
 }
 
@@ -275,6 +277,10 @@ ul {
 	padding-left: 50px;
 	font-family: Calibri;
 	padding-top: 10px;
+}
+
+#links {
+	padding-top: 30px;
 }
 
 #login_subbutton, #register_subbutton {
