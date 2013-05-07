@@ -8,7 +8,7 @@ html, body {
 
 body{
 	background: #9FC5F8;
-	font-family: Calibri;
+	font-family: Calibri, sans-serif !important;
 }
 
 #main_menu {
