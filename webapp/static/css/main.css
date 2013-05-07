@@ -122,10 +122,10 @@ body{
 }
 
 #logo {
-	padding-top: 40px;
+	padding-top: 20px;
 	width: 500px;
 	height: auto;
-	padding-left: 170px;
+	padding-left: 70px;
 }
 
 #iphones {
@@ -221,7 +221,7 @@ ul {
 #login_box {
 	background-color: #FFFF00;
 	width: 200px;
-	height: 200px;
+	height: 225px;
 	right: 40px;
 	top: 37px;
 	position:
@@ -233,7 +233,7 @@ ul {
 #register_box {
 	background-color: #FFFF00;
 	width: 200px;
-	height: 150px;
+	height: 165px;
 	left: 50%;
 	margin-left: 48px;
 	top: 37px;
