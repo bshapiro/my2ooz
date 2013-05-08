@@ -7,7 +7,7 @@ html, body {
 }
 
 body{
-	background: #9FC5F8;
+	background: #ECF7F9;
 	font-family: "Lucida Grande", Calibri, sans-serif !important;
 }
 
@@ -228,6 +228,7 @@ ul {
 	absolute;
 	border-color: black;
 	border-width: 2px;
+	z-index: 3;
 }
 
 #register_box {
