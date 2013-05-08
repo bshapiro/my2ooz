@@ -11,6 +11,11 @@ body{
 	font-family: "Lucida Grande", Calibri, sans-serif !important;
 }
 
+.clickable, li
+{
+    cursor: pointer;
+}
+
 #main_menu {
 	font-size: 14px;
 	top: 0;
@@ -162,7 +167,7 @@ body{
 	border-width: 5px !important;
 }
 
-#login_bar {
+#login_bar, #register_bar {
 	width: 180px;
 	height: 3px;
 	margin-left: 10px;
@@ -226,8 +231,7 @@ ul {
 	top: 37px;
 	position:
 	absolute;
-	border-color: black;
-	border-width: 2px;
+	border: 2px solid black;
 	z-index: 3;
 }
 
@@ -240,9 +244,8 @@ ul {
 	top: 37px;
 	position:
 	absolute;
-	border-color: black;
-	border-width: 2px;
 	z-index: 3;
+	border: 2px solid black;
 }
 
 #login_text, #register_text{

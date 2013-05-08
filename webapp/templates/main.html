@@ -18,8 +18,8 @@
     <div id='main_menu'>
     	<table id='menu_table'>
             <tr>
-                <td id="download_button">Download</td>
-                <td id="how_it_works_button">How It Works</td>
+                <td id="download_button" class="clickable">Download</td>
+                <td id="how_it_works_button" class="clickable">How It Works</td>
             <tr>
         </table>
     </div>
@@ -27,24 +27,25 @@
         <div id="register">
             <table id="register_table">
                 <tr>
-                    <td id="register_button">Register</td>
+                    <td id="register_button" class="clickable">Register</td>
                 </tr>
             </table>
         </div>
         <div id = "register_box" style="display: none;" class="rounded-corners">
             <div id='register_text'>Do you own or work at a venue, club, bar or party and want to create a profile for your business? Click below to fill out the information and apply for verification.</div>
-            <table class='bar' id="login_bar"><tr></tr></table>
+            <table class='bar' id="register_bar"><tr></tr></table>
             <a href="/venue_edit">
-            <div id="submit_register">
-            <input type="button" class="rounded" id="register_subbutton" value ="Register" href=""></a>
-        </div>
+                <div id="submit_register">
+                    <input type="button" class="rounded" id="register_subbutton" value ="Register">
+                </div>
+            </a>
         </div>
     </div>
     <div id='login_items'>
         <div id='login'>
             	<table id='login_table'>
                 <tr>
-                    <td id="login_button">Log in</td>
+                    <td id="login_button" class="clickable">Log in</td>
                 </tr>
             </table>
         </div>
@@ -58,14 +59,14 @@
                 <div class="label">Password</div>
                 <input id="password_input" name="password" class="rounded"/>
                 <br>
-                <div id="submit_login"><input type="submit" id="login_subbutton" class="rounded" value="Login"/></div>
+                <div id="submit_login"><input type="submit" id="login_subbutton" class="rounded clickable" value="Login"/></div>
             </form>
         </div>
     </div>
 </div>
 <div id='main'>
     <div id='slogan'> The app that finds the hottest and latest parties and events based on what's in your music library!</div>
-    <div id='logo'><img class="home_image" src="static/images/logo2.png"/></div>
+    <div id='logo'><img class="home_image" src="static/images/logo2motto.png"/></div>
     <div id='iphones'><img id="iphone_1" class="iphone" src="static/images/iphone.png"/><img id="iphone_2" class="iphone" src="static/images/iphone.png"/><img id="iphone_3" class="iphone" src="static/images/iphone.png"/></div>
 
 </div>

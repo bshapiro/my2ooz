@@ -17,4 +17,30 @@ $(document).ready( function () {
         $("#register_box").fadeOut();
     });
 
+     $('#login_header').click(function() {
+        if ($('#login_information').is(':visible')) {
+            $('#login_information').hide('slide');
+        } else {
+            $('#login_information').show('slide');
+        }
+     });
+
+
+     $('#venue_header').click(function() {
+        if ($('#venue_information').is(':visible')) {
+            $('#venue_information').hide('slide');
+        } else {
+            $('#venue_information').show('slide');
+        }
+     });
+
+     $('#calendar_header').click(function() {
+        if ($('#calendar_information').is(':visible')) {
+            $('#calendar_information').hide('slide');
+        } else {
+            $('#calendar_information').show('slide');
+        }
+     });
+
+
 });
