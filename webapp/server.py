@@ -76,18 +76,18 @@ def get_venue_info_by_venue_id(connection, venue_id):
 
 @app.route('/venue_update', methods=["POST"])
 def update_venue():
-    parameters = request.json
+    parameters = request.form
     connection = engine.connect()
+    print parameters
     if current_user.is_authenticated():
         venue_id = current_user.venue_id
         return update_venue_by_id(connection, venue_id, parameters)
     else:
         return insert_venue(connection, parameters)
 
-    print parameters
-
 
 def insert_venue(connection, parameters):
+    print "got this far"
     venue_id = randrange(0, 100000)
     query = 'insert into venue_table set'
     for key in parameters.keys():
@@ -97,7 +97,8 @@ def insert_venue(connection, parameters):
         data = connection.execute(query)
         return data
     except Exception:
-        return None
+        print "exception"
+        return "hi"
 
 
 def update_venue_by_id(connection, venue_id, parameters):
