@@ -89,20 +89,20 @@ def update_venue():
 def insert_venue(connection, parameters):
     print "got this far"
     venue_id = randrange(0, 100000)
-    query = 'insert into venue_table set'
+    query = 'insert into venue_table set '
     for key in parameters.keys():
-        query += key + '=' + parameters[key] + ','
+        query += key + "='" + parameters[key] + "',"
     query = query + "venue_id=" + str(venue_id)
     try:
         data = connection.execute(query)
         return data
-    except Exception:
-        print "exception"
+    except Exception, ex:
+        print query
         return "hi"
 
 
 def update_venue_by_id(connection, venue_id, parameters):
-    query = 'update venue_table set'
+    query = 'update venue_table set '
     for key in parameters.keys():
         query += key + '=' + parameters[key] + ','
     query += 'where venue_id = ' + str(venue_id)
@@ -129,7 +129,7 @@ def login():
             remember = request.form.get("remember", "no") == "yes"
             user = User(venue_info, active=True)
             if login_user(user, remember=remember):
-                return "Logged in!"
+                return render_template("venue_edit.html")
             else:
                 return "Sorry, but we could not log you in. Please email support@my2ooz.com for help."
         else:
