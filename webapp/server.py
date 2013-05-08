@@ -89,20 +89,22 @@ def update_venue():
 def insert_venue(connection, parameters):
     print "got this far"
     venue_id = randrange(0, 100000)
-    query = 'insert into venue_table set'
+    query = 'insert into venue_table set '
     for key in parameters.keys():
-        query += key + '=' + parameters[key] + ','
-    query = query + "venue_id=" + str(venue_id)
+        query += key + "='" + parameters[key] + "',"
+    query = query + "venue_id='" + str(venue_id) + "'"
     try:
         data = connection.execute(query)
         return data
-    except Exception:
+    except Exception, ex:
+	print query
+	print ex
         print "exception"
         return "hi"
 
 
 def update_venue_by_id(connection, venue_id, parameters):
-    query = 'update venue_table set'
+    query = 'update venue_table set '
     for key in parameters.keys():
         query += key + '=' + parameters[key] + ','
     query += 'where venue_id = ' + str(venue_id)
