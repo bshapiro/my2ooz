@@ -3,6 +3,7 @@ from flask.ext.login import LoginManager, login_user, current_user, logout_user,
 from flask.ext.sqlalchemy import SQLAlchemy
 from sqlalchemy import create_engine, MetaData
 import flask
+from random import randrange
 
 app = flask.Flask(__name__)
 
@@ -29,34 +30,15 @@ def main():
 def login_form():
     return render_template("login_form.html")
 
+
 @app.route('/venue_edit')
 def have_code():
     return render_template("venue_edit.html")
 
 
-@app.route('/')
-def test_all_calls():
-    connection = engine.connect()
-
-    # BEGIN TESTS
-    all_info = stringify(get_all_info(connection))
-    week = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
-    week_genres = []
-    for day in week:
-        week_genres.append(stringify(get_day_info_by_venue_id(connection, day, 0)))
-
-    all_info_string = "all info:  " + all_info
-    week_genres_string = ""
-    for day in week:
-        week_genres_string += day + ": " + week_genres[week.index(day)]
-
-    venue_info = 'venue info for existing login: ' + stringify(get_venue_info_by_login(connection, 'login'))
-    venue_info_2 = 'venue info for non-existent login: ' + str(get_venue_info_by_login(connection, 'admin'))
-
-    final_string = all_info_string + week_genres_string + venue_info + venue_info_2
-    print final_string
-    print "current user: " + str(current_user)
-    # END TESTS
+@app.route('/venue_info', methods='POST'):
+def current_venue_info():
+    return current_user.get_venue_info()
 
 
 def get_all_info(connection):
@@ -74,8 +56,8 @@ def get_day_info_by_venue_id(connection, day, venue_id):
     return data.fetchone()
 
 
-def get_venue_info_by_login(connection, login):
-    query = 'select * from venue_table where login = ' + str(login)
+def get_venue_info_by_email(connection, email):
+    query = 'select * from venue_table where email = ' + str(email)
     try:
         data = connection.execute(query)
     except Exception:
@@ -92,16 +74,30 @@ def get_venue_info_by_venue_id(connection, venue_id):
     return data.fetchone()
 
 
-@app.route('/update_venue', methods='POST')
+@app.route('/venue_update', methods='POST')
 def update_venue(connection, venue_id, parameters):
     connection = engine.connect()
     if current_user.is_authenticated():
         venue_id = current_user.venue_id
+        parameters = request.json
+        return update_venue_by_id(connection, venue_id, parameters)
     else:
-        return "ERROR: User is not authenticated."
-    parameters = request.json
+        return insert_venue(connection, parameters)
+
     print parameters
-    return update_venue_by_id(connection, venue_id, parameters)
+
+
+def insert_venue(connection, parameters):
+    venue_id = randrange(0, 100000)
+    query = 'insert into venue_table set'
+    for key in parameters.keys():
+        query += key + '=' + parameters[key] + ','
+    query = query + "venue_id=" + str(venue_id)
+    try:
+        data = connection.execute(query)
+        return data
+    except Exception:
+        return None
 
 
 def update_venue_by_id(connection, venue_id, parameters):
@@ -109,6 +105,11 @@ def update_venue_by_id(connection, venue_id, parameters):
     for key in parameters.keys():
         query += key + '=' + parameters[key] + ','
     query += 'where venue_id = ' + str(venue_id)
+    try:
+        data = connection.execute(query)
+        return data
+    except Exception:
+        return None
 
 
 def stringify(sql_object):
@@ -118,11 +119,11 @@ def stringify(sql_object):
 
 @app.route("/login", methods=["POST"])
 def login():
-    if "login" in request.form and "password" in request.form:
-        login = request.form["login"]
+    if "email" in request.form and "password" in request.form:
+        email = request.form["email"]
         password = request.form["password"]
         connection = engine.connect()
-        venue_info = get_venue_info_by_login(connection, login)
+        venue_info = get_venue_info_by_email(connection, email)
         if venue_info is not None and venue_info['password'] == password:
             remember = request.form.get("remember", "no") == "yes"
             user = User(venue_info, active=True)
@@ -157,20 +158,60 @@ class User:
 
     def __init__(self, venue_info, active=True):
         if venue_info is not None:
-            self.name = venue_info['manager_name']
-            self.venue_id = venue_info['venue_id']
-            self.location_name = venue_info['location_name']
-            self.venue_type = venue_info['venue_type']
-            self.login = venue_info['login']
+            self.venue_name = venue_info['venue_name']
+            self.address_line_1 = venue_info['address_line_1']
+            self.address_line_2 = venue_info['address_line_2']
+            self.city = venue_info['city']
+            self.state = venue_info['state']
+            self.zipcode = venue_info['zipcode']
+            self.venue_phone = venue_info['venue_phone']
+            self.type = venue_info['type']
+
+            self.mon_open_hour = venue_info['mon_open_hour']
+            self.mon_open_am_pm = venue_info['mon_open_am_pm']
+            self.mon_close_hour = venue_info['mon_close_hour']
+            self.mon_close_am_pm = venue_info['mon_close_am_pm']
+
+            self.tues_open_hour = venue_info['tues_open_hour']
+            self.tues_open_am_pm = venue_info['tues_open_am_pm']
+            self.tues_close_hour = venue_info['tues_close_hour']
+            self.tues_close_am_pm = venue_info['tues_close_am_pm']
+
+            self.wed_open_hour = venue_info['wed_open_hour']
+            self.wed_open_am_pm = venue_info['wed_open_am_pm']
+            self.wed_close_hour = venue_info['wed_close_hour']
+            self.wed_close_am_pm = venue_info['wed_close_am_pm']
+
+            self.thurs_open_hour = venue_info['thurs_open_hour']
+            self.thurs_open_am_pm = venue_info['thurs_open_am_pm']
+            self.thurs_close_hour = venue_info['thurs_close_hour']
+            self.thurs_close_am_pm = venue_info['thurs_close_am_pm']
+
+            self.fri_open_hour = venue_info['fri_open_hour']
+            self.fri_open_am_pm = venue_info['fri_open_am_pm']
+            self.fri_close_hour = venue_info['fri_close_hour']
+            self.fri_close_am_pm = venue_info['fri_close_am_pm']
+
+            self.sat_open_hour = venue_info['sat_open_hour']
+            self.sat_open_am_pm = venue_info['sat_open_am_pm']
+            self.sat_close_hour = venue_info['sat_close_hour']
+            self.sat_close_am_pm = venue_info['sat_close_am_pm']
+
+            self.sun_open_hour = venue_info['sun_open_hour']
+            self.sun_open_am_pm = venue_info['sun_open_am_pm']
+            self.sun_close_hour = venue_info['sun_close_hour']
+            self.sun_close_am_pm = venue_info['sun_close_am_pm']
+
+            self.website = venue_info['website']
+            self.yelp = venue_info['yelp']
+            self.photos = venue_info['photos']
+            self.other_info = venue_info['other_info']
+            self.discounts = venue_info['discounts']
+            self.contact = venue_info['contact']
+            self.contact_phone = venue_info['contact_phone']
+            self.email = venue_info['email']
             self.password = venue_info['password']
-            self.monday = venue_info['monday']
-            self.tuesday = venue_info['tuesday']
-            self.wednesday = venue_info['wednesday']
-            self.thursday = venue_info['thursday']
-            self.friday = venue_info['friday']
-            self.saturday = venue_info['saturday']
-            self.sunday = venue_info['sunday']
-            self.food_drink = venue_info['food_drink']
+            self.venue_info = venue_info
             self.authenticated = True
         else:
             self.authenticated = False
@@ -188,5 +229,12 @@ class User:
     def get_id(self):
         return unicode(self.venue_id)
 
+    def get_venue_info(self):
+        return self.venue_info
+
+    def process_hours(self, hours):
+        return hours
+
 if __name__ == "__main__":
     app.run(port=61004)
+

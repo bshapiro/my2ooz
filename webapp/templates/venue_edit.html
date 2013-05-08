@@ -9,6 +9,7 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="static/js/jquery.hoverIntent.minified.js"></script>
 <script type="text/javascript" src="static/js/main.js"></script>
+<script type="text/javascript" src="static/js/venue_edit.js"></script>
 </head>
 <body>
 <div id='header'>
@@ -55,20 +56,20 @@
         <div id='logo'><img class="home_image" src="static/images/logo2motto.png"/></div>
 
         <div id='form'>
-            <form action="post">
+            <form action="/venue_update" method="post">
 
                 <div id="venue_header" class="header rounded-corners clickable">Venue Information</div>
                 <div id="venue_information" style="display: none;">
                     <div class="label required">Venue Name</div>
-                    <input type="text" name="venue" placeholder="Ex. The Clubhouse Bar"/><br>
+                    <input type="text" name="venue_name" placeholder="Ex. The Clubhouse Bar"/><br>
                     <div class="label required">Address</div>
-                    <input type="text" name="address_1" placeholder="line 1"/><br><br>
-                    <input type="text" name="address_2" placeholder="line 2"/><br><br>
+                    <input type="text" name="address_line_1" placeholder="line 1"/><br><br>
+                    <input type="text" name="address_line_2" placeholder="line 2"/><br><br>
                     <input type="text" name="city" placeholder = "city"/><br><br>
                     <select name="state" style="float: left;">
                         <option value="CA">California</option>
                     </select>
-                    <input type="text" name="zip_code" placeholder="zip code" style="width: 50px !important;"><br>
+                    <input type="text" name="zipcode" placeholder="zip code" style="width: 50px !important;"><br>
                     <div class="label required">Phone Number</div>
                     <input type="text" name="venue_phone" placeholder="(###) ### - ####"/><br>
                     <div class="label required">Type of Venue</div>
@@ -393,9 +394,9 @@
                     <input type="button" value="Upload"/>
                     <input type="button" value="Upload"/><br>
                     <div class="label">Other information</div>
-                    <textarea name="other" placeholder="ex. about the venue, dress code, DJ information, party information, etc. (500 word limit)"></textarea><br><br><br><br><br><br>
+                    <textarea name="other_info" placeholder="ex. about the venue, dress code, DJ information, party information, etc. (500 word limit)"></textarea><br><br><br><br><br><br>
                     <div class="label">Drink/Food/Other Specials/Discounts with Mymyooz</div>
-                    <textarea name="discounts" placeholder="any specials you wish to give to patrons who use Mymyooz (500 word limit)"></textarea><input type="button" class="rounded clickable" id="save1" class="save" value ="Save"/>
+                    <textarea name="discounts" placeholder="any specials you wish to give to patrons who use Mymyooz (500 word limit)"></textarea><input type="submit" class="rounded clickable" id="save1" class="save" value ="Save"/>
                     <br><br><br><br><br><br><br><br><br>
                 </div>
             </form>
@@ -405,13 +406,13 @@
         <div id="login_header" class="header rounded-corners clickable">Login Information</div>
         <div id="login_information" style="display: none;">
             <div class="label required">Contact Name</div>
-            <input type="text" name="name" placeholder="person in charge of musical classification"/><br>
+            <input type="text" name="contact" placeholder="person in charge of musical classification"/><br>
             <div class="label required">Email</div>
             <input type="text" name="email" placeholder="main contact email address"/><br>
             <div class="label required" >Contact Person Phone Number</div>
-            <input type="text" name="phone" placeholder="(###) ### - ####"/><br>
+            <input type="text" name="contact_phone" placeholder="(###) ### - ####"/><br>
             <div class="label required">Account password</div>
-            <input type="password" placeholder="must be between 8 and 12 characters" name="password"/><input type="button" class="rounded clickable" id="save2" class="save" value ="Save"/><br><br><br>
+            <input type="password" placeholder="must be between 8 and 12 characters" name="password"/><input type="submit" class="rounded clickable" id="save2" class="save" value ="Save"/><br><br><br>
         </div>
 
         <div id="calendar_header" class="header rounded-corners clickable">Calendar</div>
