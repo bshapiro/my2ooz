@@ -15,6 +15,7 @@ html, body {
     border: 1px solid black;
     text-align: center;
     position: relative;
+    color: white;
 }
 
 .information {
