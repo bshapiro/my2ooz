@@ -76,10 +76,10 @@ def get_venue_info_by_venue_id(connection, venue_id):
 
 @app.route('/venue_update', methods=["POST"])
 def update_venue():
-    connection = engine.connect()
+    parameters = request.json
     if current_user.is_authenticated():
         venue_id = current_user.venue_id
-        parameters = request.json
+        connection = engine.connect()
         return update_venue_by_id(connection, venue_id, parameters)
     else:
         return insert_venue(connection, parameters)
