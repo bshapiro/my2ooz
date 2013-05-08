@@ -15,7 +15,7 @@ html, body {
     border: 1px solid black;
     text-align: center;
     position: relative;
-    color: white;
+    color: black;
 }
 
 .information {
@@ -23,13 +23,33 @@ html, body {
     position: relative;
 }
 
+#save1 {
+    margin-top: 80px;
+    font-size: 12px;
+    width: 100px;
+    background-color: #073763;
+    color: #FFFFFF;
+    border: #2B78E4;
+    border-width: 5px;
+    position: absolute;
+}
+
+#save2 {
+    font-size: 12px;
+    width: 100px;
+    background-color: #073763;
+    color: #FFFFFF;
+    border: #2B78E4;
+    border-width: 5px;
+    position: absolute;
+}
 #main .label {
     position: relative;
     margin-top: 15px;
     display: block;
 }
 
-#login_information input {
+#login_information input[type="text"], input[type="password"] {
     float: left;
     display: block;
     width: 300px;

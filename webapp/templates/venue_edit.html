@@ -45,24 +45,10 @@
         <div id='login'>
                 <table id='login_table'>
                 <tr>
-                    <td id="login_button" class="clickable">Log in</td>
+                    <td id="login_button" class="clickable">Log out</td>
                 </tr>
             </table>
         </div>
-        <div id="login_box" class="rounded-corners" style="display: none;">
-            <div id="login_text"> Already signed up  with a venue and want to edit your music or venue information? Login here!</div>
-            <table class='bar' id="login_bar"><tr></tr></table>
-            <form id="login_form" action="/login" method="post">
-                <div class="label">Email address</div>
-                <input id="login_input" name="login"/>
-                <br/>
-                <div class="label">Password</div>
-                <input id="password_input" name="password"/>
-                <br>
-                <div id="submit_login"><input type="submit" id="login_subbutton" class="rounded clickable" value="Login"/></div>
-            </form>
-        </div>
-    </div>
 </div>
 <div id='outer'>
     <div id='main'>
@@ -409,7 +395,8 @@
                     <div class="label">Other information</div>
                     <textarea name="other" placeholder="ex. about the venue, dress code, DJ information, party information, etc. (500 word limit)"></textarea><br><br><br><br><br><br>
                     <div class="label">Drink/Food/Other Specials/Discounts with Mymyooz</div>
-                    <textarea name="discounts" placeholder="any specials you wish to give to patrons who use Mymyooz (500 word limit)"></textarea><br><br><br><br><br><br><br><br><br>
+                    <textarea name="discounts" placeholder="any specials you wish to give to patrons who use Mymyooz (500 word limit)"></textarea><input type="button" class="rounded clickable" id="save1" class="save" value ="Save"/>
+                    <br><br><br><br><br><br><br><br><br>
                 </div>
             </form>
         </div>
@@ -424,7 +411,7 @@
             <div class="label required" >Contact Person Phone Number</div>
             <input type="text" name="phone" placeholder="(###) ### - ####"/><br>
             <div class="label required">Account password</div>
-            <input type="password" placeholder="must be between 8 and 12 characters" name="password"/><br><br><br>
+            <input type="password" placeholder="must be between 8 and 12 characters" name="password"/><input type="button" class="rounded clickable" id="save2" class="save" value ="Save"/><br><br><br>
         </div>
 
         <div id="calendar_header" class="header rounded-corners clickable">Calendar</div>
