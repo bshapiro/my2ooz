@@ -36,7 +36,7 @@ def have_code():
     return render_template("venue_edit.html")
 
 
-@app.route('/venue_info', methods='POST'):
+@app.route('/venue_info', methods='POST')
 def current_venue_info():
     return current_user.get_venue_info()
 
