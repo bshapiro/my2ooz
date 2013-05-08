@@ -52,12 +52,12 @@
         <div id="login_box" class="rounded-corners" style="display: none;">
             <div id="login_text"> Already signed up  with a venue and want to edit your music or venue information? Login here!</div>
             <table class='bar' id="login_bar"><tr></tr></table>
-            <form id="login_form" action="/login" method="post">
+            <form id="login_form" action="/my2ooz/login" method="post">
                 <div class="label">Email address</div>
                 <input id="login_input" name="email"/>
                 <br/>
                 <div class="label">Password</div>
-                <input id="password_input" name="password"/>
+                <input type="password" id="password_input" name="password"/>
                 <br>
                 <div id="submit_login"><input type="submit" id="login_subbutton" class="rounded clickable" value="Login"/></div>
             </form>
