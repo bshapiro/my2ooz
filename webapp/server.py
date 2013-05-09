@@ -98,8 +98,8 @@ def insert_venue(connection, parameters):
         data = connection.execute(query)
         return data
     except Exception, ex:
-        print query
         print ex
+        print query
         return "hi"
 
 
@@ -111,7 +111,9 @@ def update_venue_by_id(connection, venue_id, parameters):
     try:
         data = connection.execute(query)
         return data
-    except Exception:
+    except Exception, ex:
+        print ex
+        print query
         return None
 
 
