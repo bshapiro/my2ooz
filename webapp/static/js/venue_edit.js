@@ -14,11 +14,11 @@ $(document).ready(function () {
 
 
     $("#logout_items").mouseover(function() {
-        $("#login_box").fadeIn();
+        $("#logout_box").fadeIn();
     });
 
      $("#logout_items").mouseleave(function() {
-        $("#login_box").fadeOut();
+        $("#logout_box").fadeOut();
     });
 
 
