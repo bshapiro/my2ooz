@@ -151,7 +151,6 @@ def load_user(userid):
 
 
 @app.route("/logout", methods=["POST"])
-@login_required
 def logout():
     if logout_user():
         return render_template("main.html")
