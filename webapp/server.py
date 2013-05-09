@@ -150,13 +150,14 @@ def load_user(userid):
         return User(venue_info)
 
 
-@app.route("/logout")
+@app.route("/logout", methods=["POST"])
 @login_required
 def logout():
     if logout_user():
-        return "User successfully logged out."
+        return render_template("main.html")
     else:
-        return "There was an error logging out the user."
+	print "ERROR: could not log user out!"
+        return render_template("main.html")
 
 
 class User:
