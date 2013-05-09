@@ -95,22 +95,22 @@ def insert_venue(connection, parameters):
         query += key + "='" + parameters[key] + "',"
     query = query + "venue_id='" + str(venue_id) + "'"
     try:
-        data = connection.execute(query)
+        connection.execute(query)
         return "success"
     except Exception, ex:
-	print query
-	print ex
-	return None
+        print query
+        print ex
+        return None
 
 
 def update_venue_by_id(connection, venue_id, parameters):
     query = 'update venue_table set '
     for key in parameters.keys():
         query += key + "='" + parameters[key] + "',"
-    query += "where venue_id='" + str(venue_id) + "'"
+    query = query[:-1] + "where venue_id='" + str(venue_id) + "'"
     try:
-        data = connection.execute(query)
-        return data
+        connection.execute(query)
+        return "success"
     except Exception, ex:
         print query
         print ex
