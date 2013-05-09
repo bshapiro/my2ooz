@@ -50,7 +50,12 @@ $(document).ready(function () {
 
 
 
-    $("#form_object").submit(function(){
+    var buttonpressed;
+    $('.save').click( function() {
+	buttonpressed = $(this).attr('id');	
+    });
+
+    $("#form_object").submit(function(e){
            $.post(
                "/my2ooz/venue_update",
                $("#form_object").serialize(),
@@ -58,7 +63,19 @@ $(document).ready(function () {
                    console.log(data);
                }
            );
-           $('.success').show();
+	   console.log(buttonpressed); 
+
+	   if (buttonpressed == "save1") {
+           $('#success1').show('slow');
+	   setTimeout(function(){
+		$('#success').hide('slow');
+	   }, 5000);
+	   } else {
+	   $('#success2').show('slow');
+           setTimeout(function(){
+                $('#success').hide('slow');
+           }, 5000);
+	   }
            return false;
     });
 });
