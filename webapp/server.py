@@ -96,24 +96,24 @@ def insert_venue(connection, parameters):
     query = query + "venue_id='" + str(venue_id) + "'"
     try:
         data = connection.execute(query)
-        return data
+        return "success"
     except Exception, ex:
-        print ex
-        print query
-        return "hi"
+	   print query
+	   print ex
+       return None
 
 
 def update_venue_by_id(connection, venue_id, parameters):
     query = 'update venue_table set '
     for key in parameters.keys():
         query += key + "='" + parameters[key] + "',"
-    query += 'where venue_id = ' + str(venue_id)
+    query += "where venue_id='" + str(venue_id) + "'"
     try:
         data = connection.execute(query)
         return data
     except Exception, ex:
-        print ex
         print query
+        print ex
         return None
 
 
@@ -154,9 +154,9 @@ def load_user(userid):
 @login_required
 def logout():
     if logout_user():
-        return render_template("main.html")
+        return "User successfully logged out."
     else:
-        return render_template("main.html")
+        return "There was an error logging out the user."
 
 
 class User:
