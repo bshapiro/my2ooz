@@ -134,13 +134,13 @@ body{
     top: 0;
 }
 
-#login {
+#logout {
     right: 100px;
     top: 0;
     position: absolute;
 }
 
-#login_table {
+#logout_table {
     font-size: 14px;
     width: 80px;
     height: 20px;
@@ -150,7 +150,7 @@ body{
     border-spacing: 0;
 }
 
-#login_table td, th{
+#logout_table td, th{
     border: 2px solid black;
     border-top: 0 !important;
     text-align: center;
@@ -236,7 +236,7 @@ body{
     border-width: 5px !important;
 }
 
-#login_bar, #register_bar {
+#logout_bar, #register_bar {
     width: 180px;
     height: 3px;
     margin-left: 10px;
@@ -279,10 +279,10 @@ ul {
     height: auto;
 }
 
-#login_box {
+#logout_box {
     background-color: #FFFF00;
     width: 200px;
-    height: 225px;
+    height: 125px;
     right: 40px;
     top: 37px;
     position:
@@ -304,7 +304,7 @@ ul {
     border: 2px solid black;
 }
 
-#login_text, #register_text{
+#logout_text, #register_text{
     padding: 10px;
     text-align: left;
     font-weight: bold;
@@ -336,17 +336,17 @@ ul {
     padding-bottom: 5px;
 }
 
-#login_form {
+#logout_form {
     padding-left: 10px;
     padding-right: 10px;
     padding-top: 5px;
 }
 
-#login_input, #password_input {
+#logout_input, #password_input {
     width: 160px;
 }
 
-#submit_login {
+#submit_logout {
     padding-left: 40px;
     padding-top: 10px;
 }
@@ -361,7 +361,7 @@ ul {
     padding-top: 30px;
 }
 
-#login_subbutton, #register_subbutton {
+#logout_subbutton, #register_subbutton {
     font-size: 12px;
     width: 100px;
     background-color: #073763;
