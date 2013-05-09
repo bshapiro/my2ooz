@@ -46,7 +46,9 @@
         <div id='login'>
                 <table id='login_table'>
                 <tr>
-                    <td id="login_button" class="clickable">Log out</td>
+                    <a href="/my2ooz/logout">
+                        <td id="login_button" class="clickable">Log out</td>
+                    </a>
                 </tr>
             </table>
         </div>
@@ -56,7 +58,7 @@
         <div id='logo'><img class="home_image" src="static/images/logo2motto.png"/></div>
 
         <div id='form'>
-            <form action="/my2ooz/venue_update" method="post">
+            <form action="/my2ooz/venue_update" id='form_object' method="post">
 
                 <div id="venue_header" class="header rounded-corners clickable">Venue Information</div>
                 <div id="venue_information" style="display: none;">
