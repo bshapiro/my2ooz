@@ -21,6 +21,7 @@ $(document).ready(function () {
         $("#login_box").fadeOut();
     });
 
+
       $('#login_header').click(function() {
         if ($('#login_information').is(':visible')) {
             $('#login_information').hide('slide');
