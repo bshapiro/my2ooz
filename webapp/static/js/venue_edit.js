@@ -5,10 +5,10 @@ $(document).ready(function () {
       type: "POST",
       url: "/my2ooz/venue_info",
     }).done(function( data) {
-      elements = $(this).filter('[name]').attr('name');
+      elements = $('[name]');  
       console.log(elements);
       for (var i = 0; i < elements.length; i++) {
-        elements[i].attr('value', data[elements[i].attr('name')]);
+        $(elements[i]).attr('value', data[$(elements[i]).attr('name')]);
       }
     });
 

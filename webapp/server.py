@@ -3,6 +3,7 @@ from flask.ext.login import LoginManager, login_user, current_user, logout_user,
 from flask.ext.sqlalchemy import SQLAlchemy
 from sqlalchemy import create_engine, MetaData
 import flask
+from flask import jsonify
 from random import randrange
 
 app = flask.Flask(__name__)
@@ -36,9 +37,9 @@ def have_code():
     return render_template("venue_edit.html")
 
 
-@app.route('/venue_info', methods='POST')
+@app.route('/venue_info', methods=['POST'])
 def current_venue_info():
-    return current_user.get_venue_info()
+    return jsonify(current_user.get_venue_info())
 
 
 def get_all_info(connection):
@@ -57,7 +58,7 @@ def get_day_info_by_venue_id(connection, day, venue_id):
 
 
 def get_venue_info_by_email(connection, email):
-    query = 'select * from venue_table where email = ' + str(email)
+    query = "select * from venue_table where email = '" + str(email) + "'"
     try:
         data = connection.execute(query)
     except Exception:
@@ -160,7 +161,8 @@ class User:
 
     def __init__(self, venue_info, active=True):
         if venue_info is not None:
-            self.venue_name = venue_info['venue_name']
+            self.venue_id = venue_info['venue_id']
+	    self.venue_name = venue_info['venue_name']
             self.address_line_1 = venue_info['address_line_1']
             self.address_line_2 = venue_info['address_line_2']
             self.city = venue_info['city']
@@ -232,10 +234,13 @@ class User:
         return unicode(self.venue_id)
 
     def get_venue_info(self):
-        return self.venue_info
+        return self.as_dict(self.venue_info)
 
     def process_hours(self, hours):
         return hours
+
+    def as_dict(self, row_proxy):
+       return dict(zip(row_proxy.keys(), row_proxy.values()))
 
 if __name__ == "__main__":
     app.run(port=61004)
