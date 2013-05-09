@@ -96,7 +96,14 @@ def insert_venue(connection, parameters):
     query = query + "venue_id='" + str(venue_id) + "'"
     try:
         connection.execute(query)
-        return "success"
+        email = parameters['email']
+        venue_info = get_venue_info_by_email(connection, email)
+        user = User(venue_info, active=True)
+        remember = request.form.get("remember", "no") == "yes"
+        if login_user(user, remember=remember):
+            return render_template("venue_edit.html")
+        else:
+            return "Sorry, but we could not log you in. Please email support@my2ooz.com for help."
     except Exception, ex:
         print query
         print ex
@@ -158,6 +165,10 @@ def logout():
 	print "ERROR: could not log user out!"
         return render_template("main.html")
 
+
+@app.route("/check_auth", methods=["POST"])
+def check_auth():
+    return current_user.is_authenticated()
 
 class User:
 

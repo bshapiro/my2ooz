@@ -3,6 +3,14 @@ $(document).ready(function () {
 
     $.ajax({
       type: "POST",
+      url: "/my2ooz/check_auth",
+    }).done(function( data) {
+      console.log(data);
+    });
+
+
+    $.ajax({
+      type: "POST",
       url: "/my2ooz/venue_info",
     }).done(function( data) {
       elements = $('[name]');
@@ -11,6 +19,8 @@ $(document).ready(function () {
         $(elements[i]).attr('value', data[$(elements[i]).attr('name')]);
       }
     });
+
+
 
 
     $("#logout_items").mouseover(function() {
