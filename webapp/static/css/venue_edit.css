@@ -370,7 +370,7 @@ ul {
     border-width: 5px;
 }
 
-#success {
+#success1, #success2 {
     padding-top: 10px;
     padding-bottom: 10px;
     text-align: center;
