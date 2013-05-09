@@ -106,7 +106,7 @@ def insert_venue(connection, parameters):
 def update_venue_by_id(connection, venue_id, parameters):
     query = 'update venue_table set '
     for key in parameters.keys():
-        query += key + '=' + parameters[key] + ','
+        query += key + "='" + parameters[key] + "',"
     query += 'where venue_id = ' + str(venue_id)
     try:
         data = connection.execute(query)
