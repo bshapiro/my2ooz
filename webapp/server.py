@@ -98,9 +98,9 @@ def insert_venue(connection, parameters):
         data = connection.execute(query)
         return "success"
     except Exception, ex:
-	   print query
-	   print ex
-       return None
+	print query
+	print ex
+	return None
 
 
 def update_venue_by_id(connection, venue_id, parameters):
