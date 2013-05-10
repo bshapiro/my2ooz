@@ -31,6 +31,9 @@ def main():
 def login_form():
     return render_template("login_form.html")
 
+@app.route('/logout_confirm')
+def logout_confirm():
+    return render_template("logout_confirm.html")
 
 @app.route('/venue_edit')
 def have_code():
