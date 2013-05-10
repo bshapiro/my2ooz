@@ -144,11 +144,13 @@ $(document).ready(function () {
       $('#calendar').fullCalendar('rerenderEvents');
       $('#new_event').hide();
       $('.overlay').fadeOut('fast');
+      $('#event_form')[0].reset();
     });
 
     $('#cancel_event').click(function() {
       $('#new_event').hide();
       $('.overlay').fadeOut('fast');
+      $('#event_form')[0].reset();
     });
 
 
