@@ -168,7 +168,7 @@ def logout():
 
 @app.route("/check_auth", methods=["POST"])
 def check_auth():
-    return current_user.is_authenticated()
+    return str(current_user.is_authenticated())
 
 class User:
 

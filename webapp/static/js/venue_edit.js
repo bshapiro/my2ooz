@@ -6,6 +6,9 @@ $(document).ready(function () {
       url: "/my2ooz/check_auth",
     }).done(function( data) {
       console.log(data);
+      if (data != "False") {
+	$('#logout_items').attr('style', '');
+	}
     });
 
 
