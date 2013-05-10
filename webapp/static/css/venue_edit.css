@@ -7,6 +7,11 @@ html, body {
     padding: 0;
 }
 
+body{
+    background: #ECF7F9;
+    font-family: "Lucida Grande", Calibri, sans-serif !important;
+}
+
 .header {
     width: 600px;
     padding-top: 20px;
@@ -23,6 +28,9 @@ html, body {
     position: relative;
 }
 
+#calendar {
+    padding-top: 40px;
+}
 #save1 {
     margin-top: 80px;
     font-size: 12px;
@@ -117,7 +125,7 @@ body{
     border-spacing: 0;
 }
 
-#menu_table td, th{
+#menu_table td, #menu_table th{
     border: 1px solid black;
     border-top: 0 !important;
     text-align: center;
@@ -150,7 +158,7 @@ body{
     border-spacing: 0;
 }
 
-#logout_table td, th{
+#logout_table td, #logout_table th{
     border: 2px solid black;
     border-top: 0 !important;
     text-align: center;
@@ -175,7 +183,7 @@ body{
     position: absolute;
 }
 
-#register_table td, th{
+#register_table td, #register_table th{
     border: 1px solid black;
     border-top: 0 !important;
     text-align: center;
@@ -312,8 +320,8 @@ ul {
     line-height: 15px;
 }
 
-.label {
-    font-size: 12px;
+.label, label {
+    font-size: 12px !important;
     text-align: left;
     padding-top: 5px;
     padding-bottom: 2px;
@@ -362,7 +370,7 @@ ul {
     padding-top: 30px;
 }
 
-#logout_subbutton, #register_subbutton {
+#logout_subbutton, #register_subbutton, #cancel_event, #save_event {
     font-size: 12px;
     width: 100px;
     background-color: #073763;
@@ -387,4 +395,76 @@ ul li {
     color: red;
     display: inline;
     padding-left: 10px;
+}
+
+.edit_button {
+    position: relative;
+    left: 50%;
+    margin-left: -25px;
+    font-size: 12px;
+    width: 50px;
+    height: 30px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    background-color: #073763;
+    color: #FFFFFF;
+    border: #2B78E4;
+    border-width: 5px;
+    text-align: center;
+}
+
+.overlay{
+    opacity:0.8;
+    background-color:#000000;
+    position: fixed;
+    width:100%;
+    height:100%;
+    top: 0px;
+    left: 0px;
+    z-index:1000;
+}
+
+#new_event {
+    background: #ECF7F9;
+    z-index: 999999;
+    position: absolute;
+    left: 50%;
+    width: 400px;
+    margin-left: -200px;
+    height: 550px;
+    top: 75%;
+    margin-top: -200px;
+}
+
+#event_form {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+}
+
+#genre2, #genre3, #genre4, #genre5 {
+    margin-left: 20px !important;
+    position: relative;
+}
+
+.date {
+    margin-left: 10px;
+}
+
+#date {
+    padding-bottom: 20px;
+    font-size: 24px;
+}
+
+#cancel_event {
+    bottom: 20px;
+    position: absolute;
+    right: 130px;
+}
+
+#save_event {
+    bottom: 20px;
+    float: right;
+    right: 20px;
+    position: absolute;
 }

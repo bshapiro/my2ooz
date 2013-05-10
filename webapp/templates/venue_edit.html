@@ -4,14 +4,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Untitled Document</title>
 <link href="static/css/venue_edit.css" rel="stylesheet" type="text/css"/>
+<link href="static/js/fullcalendar/fullcalendar.css" rel="stylesheet" type="text/css"/>
 <link href="static/css/reset.css" rel="stylesheet" type="text/css"/>
 <link href="static/css/effects.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="static/js/jquery.hoverIntent.minified.js"></script>
 <script type="text/javascript" src="static/js/main.js"></script>
+<script type="text/javascript" src="static/js/fullcalendar/fullcalendar.min.js"></script>
 <script type="text/javascript" src="static/js/venue_edit.js"></script>
 </head>
 <body>
+<div class='overlay' style="display: none;"></div>
 <div id='header'>
     <div id='home'>
         <a href="/my2ooz/main"><img class="home_image clickable" src="static/images/logo2.png"/></a>
@@ -427,11 +430,203 @@
 
 
         <div id="calendar_header" class="header rounded-corners clickable">Calendar</div>
-        <div id="calendar">
-            <!-- insert Calendar here -->
+        <div id="calendar_information">
+            <div id="calendar">
+                <div id="new_event" class="rounded-corners" style="display: none;">
+                    <form id='event_form' action="/my2ooz/create_event" method="post">
+                        <div id="date"></div>
+                        <select id="genre1">
+                            <option value="" disabled selected>Choose a primary genre for this night</option>
+                            <option>Electronic</option>
+                            <option>&emsp;Ambient</option>
+                            <option>&emsp;Breakbeat</option>
+                            <option>&emsp;Dance</option>
+                            <option>&emsp;Uk Garage</option>
+                            <option>&emsp;Dubstep</option>
+                            <option>&emsp;Electro</option>
+                            <option>&emsp;Eurodance</option>
+                            <option>&emsp;Hardcore</option>
+                            <option>&emsp;Hi-NRG</option>
+                            <option>&emsp;House</option>
+                            <option>&emsp;Industrial</option>
+                            <option>&emsp;Synthpop</option>
+                            <option>&emsp;Techno</option>
+                            <option>&emsp;Trance</option>
+                            <option>&emsp;&emsp;Acid</option>
+                            <option>&emsp;&emsp;Balearic</option>
+                            <option>&emsp;&emsp;Classic</option>
+                            <option>&emsp;&emsp;Dream</option>
+                            <option>&emsp;&emsp;Euro</option>
+                            <option>&emsp;&emsp;Goa</option>
+                            <option>&emsp;&emsp;Hard (Hardstyle)</option>
+                            <option>&emsp;&emsp;Progressive</option>
+                            <option>&emsp;&emsp;Psychedelic</option>
+                            <option>&emsp;&emsp;Tech</option>
+                            <option>&emsp;&emsp;Uplifting</option>
+                            <option>&emsp;&emsp;Vocal</option>
+                            <option>&emsp;Trip-Hop</option>
+                        </select>
+                        <br>
+                        <br>
+                         <select id="genre2">
+                            <option value="" disabled selected>Choose up to 4 secondary genres for this night</option>
+                            <option>Electronic</option>
+                            <option>&emsp;Ambient</option>
+                            <option>&emsp;Breakbeat</option>
+                            <option>&emsp;Dance</option>
+                            <option>&emsp;Uk Garage</option>
+                            <option>&emsp;Dubstep</option>
+                            <option>&emsp;Electro</option>
+                            <option>&emsp;Eurodance</option>
+                            <option>&emsp;Hardcore</option>
+                            <option>&emsp;Hi-NRG</option>
+                            <option>&emsp;House</option>
+                            <option>&emsp;Industrial</option>
+                            <option>&emsp;Synthpop</option>
+                            <option>&emsp;Techno</option>
+                            <option>&emsp;Trance</option>
+                            <option>&emsp;&emsp;Acid</option>
+                            <option>&emsp;&emsp;Balearic</option>
+                            <option>&emsp;&emsp;Classic</option>
+                            <option>&emsp;&emsp;Dream</option>
+                            <option>&emsp;&emsp;Euro</option>
+                            <option>&emsp;&emsp;Goa</option>
+                            <option>&emsp;&emsp;Hard (Hardstyle)</option>
+                            <option>&emsp;&emsp;Progressive</option>
+                            <option>&emsp;&emsp;Psychedelic</option>
+                            <option>&emsp;&emsp;Tech</option>
+                            <option>&emsp;&emsp;Uplifting</option>
+                            <option>&emsp;&emsp;Vocal</option>
+                            <option>&emsp;Trip-Hop</option>
+                        </select>
+                        <br>
+                        <br>
+                         <select id="genre3">
+                            <option value="" disabled selected>Choose up to 4 secondary genres for this night</option>
+                            <option>Electronic</option>
+                            <option>&emsp;Ambient</option>
+                            <option>&emsp;Breakbeat</option>
+                            <option>&emsp;Dance</option>
+                            <option>&emsp;Uk Garage</option>
+                            <option>&emsp;Dubstep</option>
+                            <option>&emsp;Electro</option>
+                            <option>&emsp;Eurodance</option>
+                            <option>&emsp;Hardcore</option>
+                            <option>&emsp;Hi-NRG</option>
+                            <option>&emsp;House</option>
+                            <option>&emsp;Industrial</option>
+                            <option>&emsp;Synthpop</option>
+                            <option>&emsp;Techno</option>
+                            <option>&emsp;Trance</option>
+                            <option>&emsp;&emsp;Acid</option>
+                            <option>&emsp;&emsp;Balearic</option>
+                            <option>&emsp;&emsp;Classic</option>
+                            <option>&emsp;&emsp;Dream</option>
+                            <option>&emsp;&emsp;Euro</option>
+                            <option>&emsp;&emsp;Goa</option>
+                            <option>&emsp;&emsp;Hard (Hardstyle)</option>
+                            <option>&emsp;&emsp;Progressive</option>
+                            <option>&emsp;&emsp;Psychedelic</option>
+                            <option>&emsp;&emsp;Tech</option>
+                            <option>&emsp;&emsp;Uplifting</option>
+                            <option>&emsp;&emsp;Vocal</option>
+                            <option>&emsp;Trip-Hop</option>
+                        </select>
+                        <br>
+                        <br>
+                         <select id="genre4">
+                            <option value="" disabled selected>Choose up to 4 secondary genres for this night</option>
+                            <option>Electronic</option>
+                            <option>&emsp;Ambient</option>
+                            <option>&emsp;Breakbeat</option>
+                            <option>&emsp;Dance</option>
+                            <option>&emsp;Uk Garage</option>
+                            <option>&emsp;Dubstep</option>
+                            <option>&emsp;Electro</option>
+                            <option>&emsp;Eurodance</option>
+                            <option>&emsp;Hardcore</option>
+                            <option>&emsp;Hi-NRG</option>
+                            <option>&emsp;House</option>
+                            <option>&emsp;Industrial</option>
+                            <option>&emsp;Synthpop</option>
+                            <option>&emsp;Techno</option>
+                            <option>&emsp;Trance</option>
+                            <option>&emsp;&emsp;Acid</option>
+                            <option>&emsp;&emsp;Balearic</option>
+                            <option>&emsp;&emsp;Classic</option>
+                            <option>&emsp;&emsp;Dream</option>
+                            <option>&emsp;&emsp;Euro</option>
+                            <option>&emsp;&emsp;Goa</option>
+                            <option>&emsp;&emsp;Hard (Hardstyle)</option>
+                            <option>&emsp;&emsp;Progressive</option>
+                            <option>&emsp;&emsp;Psychedelic</option>
+                            <option>&emsp;&emsp;Tech</option>
+                            <option>&emsp;&emsp;Uplifting</option>
+                            <option>&emsp;&emsp;Vocal</option>
+                            <option>&emsp;Trip-Hop</option>
+                        </select>
+                        <br>
+                        <br>
+                         <select id="genre5">
+                            <option value="" disabled selected>Choose up to 4 secondary genres for this night</option>
+                            <option>Electronic</option>
+                            <option>&emsp;Ambient</option>
+                            <option>&emsp;Breakbeat</option>
+                            <option>&emsp;Dance</option>
+                            <option>&emsp;Uk Garage</option>
+                            <option>&emsp;Dubstep</option>
+                            <option>&emsp;Electro</option>
+                            <option>&emsp;Eurodance</option>
+                            <option>&emsp;Hardcore</option>
+                            <option>&emsp;Hi-NRG</option>
+                            <option>&emsp;House</option>
+                            <option>&emsp;Industrial</option>
+                            <option>&emsp;Synthpop</option>
+                            <option>&emsp;Techno</option>
+                            <option>&emsp;Trance</option>
+                            <option>&emsp;&emsp;Acid</option>
+                            <option>&emsp;&emsp;Balearic</option>
+                            <option>&emsp;&emsp;Classic</option>
+                            <option>&emsp;&emsp;Dream</option>
+                            <option>&emsp;&emsp;Euro</option>
+                            <option>&emsp;&emsp;Goa</option>
+                            <option>&emsp;&emsp;Hard (Hardstyle)</option>
+                            <option>&emsp;&emsp;Progressive</option>
+                            <option>&emsp;&emsp;Psychedelic</option>
+                            <option>&emsp;&emsp;Tech</option>
+                            <option>&emsp;&emsp;Uplifting</option>
+                            <option>&emsp;&emsp;Vocal</option>
+                            <option>&emsp;Trip-Hop</option>
+                        </select>
+                        <br>
+                        <div class="label">Event Title</div>
+                        <input type="text" id="event_title" name="event_title"/>
+                        <br>
+                        <div class="label">Event Description</div>
+                        <textarea name="event_description" ></textarea>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <div id="first_checkbox" style="display: block; float: left;">
+                            <input id="weekly" type="checkbox" disabled="disabled"/><label for="weekly">Repeat Weekly Until</label><input type="text" class="date"  placeholder="MO/DA/YEAR" disabled="disabled"/>
+                        </div>
+                        <br>
+                        <div id="second_checkbox" style="display: block; float: left;">
+                            <input id="biweekly" type="checkbox" disabled="disabled"/><label for="biweekly">Repeat Bi-Weekly Until</label><input type="text" class="date" placeholder="MO/DA/YEAR" disabled="disabled"/>
+                        </div>
+                       <br>
+                       <div id="third_checkbox" style="display: block; float: left;">
+                            <input id="monthly" type="checkbox" disabled="disabled"/><label for="monthly">Repeat Monthly Until</label><input type="text" placeholder="MO/DA/YEAR" class="date" disabled="disabled"/>
+                       </div>
+                       <input type="button" class="rounded clickable" id="cancel_event" value ="Cancel"/>
+                       <input type="button" class="rounded clickable" id="save_event" value ="Save"/>
+                    </form>
+                </div>
+            </div>
         </div>
-
     </div>
+
     <div id='footer'>
         <div id='links'>
             <ul id='company'>

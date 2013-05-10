@@ -22,12 +22,10 @@ $(document).ready(function () {
       url: "/my2ooz/venue_info",
     }).done(function( data) {
       elements = $('[name]');
-      console.log(elements);
       for (var i = 0; i < elements.length; i++) {
         $(elements[i]).attr('value', data[$(elements[i]).attr('name')]);
       }
     });
-
 
 
 
@@ -92,4 +90,72 @@ $(document).ready(function () {
 
         return false;
     });
-});
+
+
+    var date = new Date();
+    var d = date.getDate();
+    var m = date.getMonth();
+    var y = date.getFullYear();
+
+    $('#calendar').fullCalendar({
+      header: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'month,basicWeek,basicDay'
+      },
+      editable: true,
+      events: [{
+        }
+      ]
+    });
+
+    elements = $('.fc-day-content');
+    for (var i = 0; i < elements.length; i++) {
+      $(elements[i]).append("<input class='edit_button rounded-corners clickable' value='Edit'/>");
+    }
+
+    $('#calendar_information').hide();
+
+    var cur_date_object;
+    var cur_parent;
+
+    $('.edit_button').click(function() {
+      cur_parent = $(this).parent();
+      console.log(cur_parent);
+      var cur_date = $(this).parent().parent().parent().attr('data-date');
+      cur_date_object = parseDate(cur_date);
+      var cur_date_string = cur_date_object.toDateString();
+      $('#date').text(cur_date_string);
+      $('.overlay').fadeIn('slow');
+      $('#new_event').show();
+
+    });
+
+    $('#save_event').click(function() {
+      var eventSource = new Object();
+      eventSource.title = $('#event_title').val(); // this should be string
+      eventSource.start = cur_date_object; // this should be date object
+      eventSource.end = cur_date_object;
+
+      var events = new Array();
+      events[0] = eventSource;
+      $(cur_parent).find('input').remove();
+      $('#calendar').fullCalendar('addEventSource', events);
+      $('#calendar').fullCalendar('rerenderEvents');
+      $('#new_event').hide();
+      $('.overlay').fadeOut('fast');
+    });
+
+    $('#cancel_event').click(function() {
+      $('#new_event').hide();
+      $('.overlay').fadeOut('fast');
+    });
+
+
+  });
+
+function parseDate(input) {
+  var parts = input.match(/(\d+)/g);
+  // new Date(year, month [, date [, hours[, minutes[, seconds[, ms]]]]])
+  return new Date(parts[0], parts[1]-1, parts[2]); // months are 0-based
+}
