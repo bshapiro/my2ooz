@@ -114,6 +114,13 @@ $(document).ready(function () {
       $(elements[i]).append("<input class='edit_button rounded-corners clickable' value='Edit'/>");
     }
 
+    $('.fc-text-arrow').click(function () {
+      elements = $('.fc-day-content');
+      for (var i = 0; i < elements.length; i++) {
+        $(elements[i]).append("<input class='edit_button rounded-corners clickable' value='Edit'/>");
+      }
+    });
+
     $('#calendar_information').hide();
 
     var cur_date_object;
