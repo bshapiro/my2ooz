@@ -1,5 +1,10 @@
 $(document).ready(function () {
 
+    elements = $('.required');
+    for (var i = 0; i < elements.length; i++) {
+      $(elements[i]).append("<div class='required_text'>    *required</div>");
+    }
+
 
     $.ajax({
       type: "POST",

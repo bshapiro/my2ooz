@@ -85,7 +85,7 @@ body{
     font-family: "Lucida Grande", Calibri, sans-serif !important;
 }
 
-.clickable, li
+.clickable, li:not(.title)
 {
     cursor: pointer;
 }
@@ -282,7 +282,7 @@ ul {
 #logout_box {
     background-color: #FFFF00;
     width: 200px;
-    height: 125px;
+    height: 140px;
     right: 40px;
     top: 37px;
     position:
@@ -294,7 +294,7 @@ ul {
 #register_box {
     background-color: #FFFF00;
     width: 200px;
-    height: 165px;
+    height: 180px;
     left: 50%;
     margin-left: 48px;
     top: 37px;
@@ -309,6 +309,7 @@ ul {
     text-align: left;
     font-weight: bold;
     font-size: 13px;
+    line-height: 15px;
 }
 
 .label {
@@ -374,4 +375,16 @@ ul {
     padding-top: 10px;
     padding-bottom: 10px;
     text-align: center;
+}
+
+ul li {
+    padding-top: 5px;
+    font-size: 14px;
+}
+
+.required_text {
+    font-size: 10px;
+    color: red;
+    display: inline;
+    padding-left: 10px;
 }
