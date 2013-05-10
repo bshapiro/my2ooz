@@ -116,13 +116,13 @@ body{
 #main {
 	text-align: center;
 	left: 50%;
-	margin-left: -320px;
+	margin-left: -395px;
 	position: absolute;
 }
 
 #slogan {
 	padding-top: 40px;
-	padding-left: 20px;
+	padding-left: 75px;
 	font-size: 24px;
 	width: 640px;
 	height: 50px;
@@ -133,7 +133,7 @@ body{
 	padding-top: 20px;
 	width: 500px;
 	height: auto;
-	padding-left: 70px;
+	padding-left: 145px;
 }
 
 #iphones {
@@ -151,7 +151,7 @@ body{
 
 #bottom {
 	position: absolute;
-	top: 650px;
+	top: 700px;
 	width: 100%;
 }
 
