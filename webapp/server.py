@@ -163,7 +163,7 @@ def load_user(userid):
 @app.route("/logout", methods=["POST"])
 def logout():
     if logout_user():
-        return render_template("main.html")
+        return logout_confirm()
     else:
 	print "ERROR: could not log user out!"
         return render_template("main.html")
