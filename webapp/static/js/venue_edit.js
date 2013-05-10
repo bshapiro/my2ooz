@@ -120,6 +120,25 @@ $(document).ready(function () {
     var cur_date_object;
     var cur_parent;
 
+    function resetEditButtons() {
+        $('.edit_button').remove();
+        elements = $('.fc-day-content');
+        for (var i = 0; i < elements.length; i++) {
+          $(elements[i]).append("<input class='edit_button rounded-corners clickable' value='Edit'/>");
+        }
+
+      $('.edit_button').click(function() {
+        cur_parent = $(this).parent();
+        console.log(cur_parent);
+        var cur_date = $(this).parent().parent().parent().attr('data-date');
+        cur_date_object = parseDate(cur_date);
+        var cur_date_string = cur_date_object.toDateString();
+        $('#date').text(cur_date_string);
+        $('.overlay').fadeIn('slow');
+        $('#new_event').show();
+
+      });
+    }
 
 
     $('#save_event').click(function() {
@@ -130,7 +149,7 @@ $(document).ready(function () {
 
       var events = new Array();
       events[0] = eventSource;
-      $(cur_parent).find('input').remove();
+      console.log(cur_parent);
       $('#calendar').fullCalendar('addEventSource', events);
       $('#calendar').fullCalendar('rerenderEvents');
       $('#new_event').hide();
@@ -153,22 +172,4 @@ function parseDate(input) {
   return new Date(parts[0], parts[1]-1, parts[2]); // months are 0-based
 }
 
-    function resetEditButtons() {
-      $('.edit_button').remove();
-      elements = $('.fc-day-content');
-      for (var i = 0; i < elements.length; i++) {
-        $(elements[i]).append("<input class='edit_button rounded-corners clickable' value='Edit'/>");
-      }
 
-      $('.edit_button').click(function() {
-      cur_parent = $(this).parent();
-      console.log(cur_parent);
-      var cur_date = $(this).parent().parent().parent().attr('data-date');
-      cur_date_object = parseDate(cur_date);
-      var cur_date_string = cur_date_object.toDateString();
-      $('#date').text(cur_date_string);
-      $('.overlay').fadeIn('slow');
-      $('#new_event').show();
-
-    });
-    }
