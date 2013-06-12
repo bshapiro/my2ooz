@@ -87,7 +87,7 @@ $(document).ready(function () {
                 $('#success2').hide('slow');
            }, 5000);
         }
-
+        $('#logout_items').attr('style','');
         return false;
     });
 
